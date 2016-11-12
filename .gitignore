@@ -45,3 +45,7 @@ build/
 
 # iml files
 *.iml
+libs/
+src/main/java/com/mashell/one/common/
+src/main/java/com/mashell/one/util/
+src/main/res/drawable/
