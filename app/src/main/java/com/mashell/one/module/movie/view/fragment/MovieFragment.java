@@ -1,4 +1,4 @@
-package com.mashell.one.view;
+package com.mashell.one.module.movie.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

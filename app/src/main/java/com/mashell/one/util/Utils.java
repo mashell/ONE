@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 
 /**
  * Created by mashell on 16/11/13.
+ * Email: mashell624@163.com
+ * Github: https://github.com/mashell
  */
 
 public class Utils {

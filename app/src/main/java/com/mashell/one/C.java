@@ -1,7 +1,9 @@
-package com.mashell.one.common;
+package com.mashell.one;
 
 /**
  * Created by mashell on 16/11/14.
+ * Email: mashell624@163.com
+ * Github: https://github.com/mashell
  */
 
 public  class C {

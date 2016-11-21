@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 
+import com.facebook.stetho.Stetho;
 import com.mashell.one.util.Utils;
 
 import java.util.ArrayList;
@@ -11,19 +12,42 @@ import java.util.List;
 
 /**
  * Created by mashell on 16/11/13.
+ * Email: mashell624@163.com
+ * Github: https://github.com/mashell
  */
 
 public class BaseApplication extends Application {
     public static boolean isDebug;
     public static String APP_NAME;
+    private static BaseApplication mApplication;
+    //缓存目录
+    public static String cacheDir = "";
     //存放activity的List集合
     private List<Activity> mActivityList = new ArrayList<>();
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mApplication = this;
         isDebug = Utils.isApkInDebug(this);
         APP_NAME = Utils.getApplicationName(this);
+        Stetho.initializeWithDefaults(this);
+
+        //如果存在SD卡则将缓存写入SD卡,否则写入手机内存
+        if (getApplicationContext().getExternalCacheDir() != null) {
+            cacheDir = getApplicationContext().getExternalCacheDir().toString();
+        } else {
+            cacheDir = getApplicationContext().getCacheDir().toString();
+        }
+    }
+
+    /**
+     * 获得实例
+     *
+     * @return
+     */
+    public static BaseApplication getInstance() {
+        return mApplication;
     }
 
     /**

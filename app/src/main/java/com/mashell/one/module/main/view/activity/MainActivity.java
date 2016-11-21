@@ -1,4 +1,4 @@
-package com.mashell.one;
+package com.mashell.one.module.main.view.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -7,22 +7,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mashell.one.C;
+import com.mashell.one.R;
 import com.mashell.one.base.BaseActivity;
-import com.mashell.one.common.C;
-import com.mashell.one.view.HomeFragment;
-import com.mashell.one.view.MovieFragment;
-import com.mashell.one.view.MusicFragment;
-import com.mashell.one.view.ReadFragment;
+import com.mashell.one.module.home.view.fragment.HomeFragment;
+import com.mashell.one.module.movie.view.fragment.MovieFragment;
+import com.mashell.one.module.music.view.fragment.MusicFragment;
+import com.mashell.one.module.read.view.fragment.ReadFragment;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * Created by mashell on 16/11/13.
+ * Email: mashell624@163.com
+ * Github: https://github.com/mashell
  */
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener{
     //记录当前选择的fragment
     private int currentFragment = C.T_HOME;
     private FragmentManager mFragmentManager;
@@ -30,21 +32,23 @@ public class MainActivity extends BaseActivity {
     private ReadFragment mReadFragment;
     private MusicFragment mMusicFragment;
     private MovieFragment mMovieFragment;
+
+    @BindView(R.id.mainTitle)
+    TextView mainTitle;
     @BindView(R.id.imgHome)
     ImageView imgHome;
     @BindView(R.id.imgRead)
     ImageView imgRead;
-    @BindView(R.id.imgMusic)
-    ImageView imgMusic;
     @BindView(R.id.imgMovie)
     ImageView imgMovie;
-    @BindView(R.id.mainTitle)
-    TextView mainTitle;
+    @BindView(R.id.imgMusic)
+    ImageView imgMusic;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
+
         mFragmentManager = getSupportFragmentManager();
         setTabStatus(C.T_HOME);
     }
@@ -71,6 +75,7 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 更改整个页面tab按钮状态以及fragment页面切换
+     *
      * @param position
      */
     private void setTabStatus(int position) {
@@ -79,34 +84,34 @@ public class MainActivity extends BaseActivity {
         switch (position) {
             case C.T_HOME:
                 changeStatus(C.T_HOME);
-                if (mHomeFragment == null){
+                if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
                 }
-                transaction.replace(R.id.fragmentContainer,mHomeFragment);
+                transaction.replace(R.id.fragmentContainer, mHomeFragment);
                 break;
 
             case C.T_READ:
                 changeStatus(C.T_READ);
-                if (mReadFragment == null){
+                if (mReadFragment == null) {
                     mReadFragment = new ReadFragment();
                 }
-                transaction.replace(R.id.fragmentContainer,mReadFragment);
+                transaction.replace(R.id.fragmentContainer, mReadFragment);
                 break;
 
             case C.T_MUSIC:
                 changeStatus(C.T_MUSIC);
-                if (mMusicFragment == null){
+                if (mMusicFragment == null) {
                     mMusicFragment = new MusicFragment();
                 }
-                transaction.replace(R.id.fragmentContainer,mMusicFragment);
+                transaction.replace(R.id.fragmentContainer, mMusicFragment);
                 break;
 
             case C.T_MOVIE:
                 changeStatus(C.T_MOVIE);
-                if (mMovieFragment == null){
+                if (mMovieFragment == null) {
                     mMovieFragment = new MovieFragment();
                 }
-                transaction.replace(R.id.fragmentContainer,mMovieFragment);
+                transaction.replace(R.id.fragmentContainer, mMovieFragment);
                 break;
 
             default:
@@ -145,6 +150,7 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 更改按下的tab按钮状态和toolbar的title
+     *
      * @param index
      */
     private void changeStatus(int index) {

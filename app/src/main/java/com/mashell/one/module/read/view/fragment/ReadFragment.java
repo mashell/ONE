@@ -1,4 +1,4 @@
-package com.mashell.one.view;
+package com.mashell.one.module.read.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,9 +11,11 @@ import com.mashell.one.base.BaseFragment;
 
 /**
  * Created by mashell on 16/11/14.
+ * Email: mashell624@163.com
+ * Github: https://github.com/mashell
  */
 
-public class HomeFragment extends BaseFragment {
+public class ReadFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,6 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public int bindLayout() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_read;
     }
 }

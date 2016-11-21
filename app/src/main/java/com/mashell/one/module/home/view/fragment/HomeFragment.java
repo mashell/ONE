@@ -1,4 +1,4 @@
-package com.mashell.one.view;
+package com.mashell.one.module.home.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,11 +9,15 @@ import android.view.ViewGroup;
 import com.mashell.one.R;
 import com.mashell.one.base.BaseFragment;
 
+import rx.functions.Func1;
+
 /**
  * Created by mashell on 16/11/14.
+ * Email: mashell624@163.com
+ * Github: https://github.com/mashell
  */
 
-public class ReadFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +29,15 @@ public class ReadFragment extends BaseFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    private Func1<String,String> mFunc1 = new Func1<String, String>() {
+        @Override
+        public String call(String s) {
+            return s+"拼接的";
+        }
+    };
+
     @Override
     public int bindLayout() {
-        return R.layout.fragment_read;
+        return R.layout.fragment_home;
     }
 }

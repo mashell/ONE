@@ -1,4 +1,4 @@
-package com.mashell.one.view;
+package com.mashell.one.module.music.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +11,8 @@ import com.mashell.one.base.BaseFragment;
 
 /**
  * Created by mashell on 16/11/14.
+ * Email: mashell624@163.com
+ * Github: https://github.com/mashell
  */
 
 public class MusicFragment extends BaseFragment {
