@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/fragment_home_margin"
+        android:scrollbars="none"
+        android:background="#ffffff"
+        >
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <!--底部cardview之外的view-->
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_border"
+                android:padding="@dimen/fragment_home_card_margin"
+                >
+            <ImageView
+                    android:id="@+id/home_Img"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:layout_marginBottom="8dp"
+                    android:scaleType="centerCrop"
+                    />
+            <TextView
+                    android:id="@+id/home_hp_title_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="VOL.1510"
+                    android:textSize="12sp"
+                    android:textColor="#bcbcbc"
+                    android:layout_below="@+id/home_Img"
+                    />
+            <TextView
+                    android:id="@+id/home_hp_author_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="mashell作品"
+                    android:textColor="#bcbcbc"
+                    android:textSize="12sp"
+                    android:layout_below="@+id/home_Img"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            <TextView
+                    android:id="@+id/home_hp_content_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/home_hp_author_txt"
+                    android:minHeight="150dp"
+                    android:layout_marginTop="10dp"
+                    tools:text="既然已经做出了选择，最好还是假定自己是对的。焦虑未来和后悔过去，只经历一个就够了。  from 张寒寺 《不正常人类症候群》"
+                    />
+
+            <TextView
+                    android:id="@+id/home_time_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/home_hp_content_txt"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    tools:text="Sun 20 Nov.2016"
+                    android:textColor="#bcbcbc"
+                    />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/bottomView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/diary"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/home_diary_img"
+                    android:layout_toEndOf="@+id/home_diary_img"
+                    android:textColor="#bcbcbc"
+                    />
+            <ImageView
+                    android:id="@+id/home_diary_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/diary"
+                    />
+
+            <ImageView
+                    android:id="@+id/home_share_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/share_image"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="@dimen/fragment_home_icon_margin"
+                    android:layout_marginStart="@dimen/fragment_home_icon_margin"
+                    />
+            <TextView
+                    android:id="@+id/laud_num_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/home_share_img"
+                    android:layout_toStartOf="@id/home_share_img"
+                    android:layout_centerVertical="true"
+                    tools:text="222333"
+                    android:textColor="#bcbcbc"
+                    />
+            <ImageView
+                    android:id="@+id/home_laud_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/laud_pressed"
+                    android:layout_toLeftOf="@+id/laud_num_txt"
+                    android:layout_toStartOf="@+id/laud_num_txt"
+                    />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

@@ -14,10 +14,6 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by mashell on 16/11/17.
@@ -42,7 +38,7 @@ public class RetrofitInstance {
         //带上token则 addNetworkInterceptor
         //https://drakeet.me/retrofit-2-0-okhttp-3-0-config
 
-        //HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        // HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         //loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         //Cookie的持久化管理，为每次请求带上cookie
@@ -65,7 +61,7 @@ public class RetrofitInstance {
         };
 
         mOkHttpClient = new OkHttpClient.Builder()
-                //.addInterceptor(BaseApplication.isDebug ? loggingInterceptor : null)
+//                .addInterceptor(OneApp.isDebug ? loggingInterceptor : null)
                 .cookieJar(mCookieJar)
                 .addNetworkInterceptor(new StethoInterceptor())
                 .retryOnConnectionFailure(true)
@@ -78,6 +74,7 @@ public class RetrofitInstance {
                 .client(mOkHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .baseUrl(ApiInterface.HOST)
                 .build();
     }
 
@@ -93,15 +90,7 @@ public class RetrofitInstance {
 
     //获取apiInterface单例
     public static ApiInterface getApiInterface() {
-        return SingletonHolder.INSTANCE.mApiInterface;
-    }
-
-    //线程切换
-    public <T> void toSubscribe(Observable<T> o, Subscriber<T> s) {
-        o.subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(s);
+        return getInstance().mApiInterface;
     }
 
 

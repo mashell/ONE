@@ -11,6 +11,7 @@ import com.mashell.one.C;
 import com.mashell.one.R;
 import com.mashell.one.base.BaseActivity;
 import com.mashell.one.module.home.view.fragment.HomeFragment;
+import com.mashell.one.module.main.presenter.MainPresenter;
 import com.mashell.one.module.movie.view.fragment.MovieFragment;
 import com.mashell.one.module.music.view.fragment.MusicFragment;
 import com.mashell.one.module.read.view.fragment.ReadFragment;
@@ -24,7 +25,8 @@ import butterknife.OnClick;
  * Github: https://github.com/mashell
  */
 
-public class MainActivity extends BaseActivity implements View.OnClickListener{
+public class MainActivity extends BaseActivity<MainPresenter> implements View.OnClickListener{
+
     //记录当前选择的fragment
     private int currentFragment = C.T_HOME;
     private FragmentManager mFragmentManager;
@@ -48,9 +50,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mFragmentManager = getSupportFragmentManager();
         setTabStatus(C.T_HOME);
+
     }
 
     @OnClick({R.id.imgHome, R.id.imgRead, R.id.imgMusic, R.id.imgMovie})
@@ -71,6 +73,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             default:
                 break;
         }
+    }
+
+    @Override
+    public MainPresenter createPresenter() {
+        return new MainPresenter();
     }
 
     /**
@@ -189,8 +196,4 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         return R.layout.activity_main;
     }
 
-    @Override
-    public void initParams(Bundle params) {
-
-    }
 }

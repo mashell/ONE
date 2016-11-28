@@ -4,4 +4,9 @@
     <string name="tab_read">阅读</string>
     <string name="tab_music">音乐</string>
     <string name="tab_movie">电影</string>
+    <string name="left_most_text">右滑刷新界面</string>
+    <string name="right_most_text">左滑进入往期列表</string>
+    <string name="early_list">往期列表</string>
+    <string name="no_more">没有更多了</string>
+    <string name="diary">小记</string>
 </resources>

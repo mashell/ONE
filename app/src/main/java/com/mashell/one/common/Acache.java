@@ -13,7 +13,7 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import com.mashell.one.base.BaseApplication;
+import com.mashell.one.OneApp;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,7 +52,7 @@ public class ACache {
     }
 
     private void init() {
-        File file = new File(BaseApplication.cacheDir,"aCacheData");
+        File file = new File(OneApp.cacheDir,"aCacheData");
         if (!file.exists() && !file.mkdirs()) {
             throw new RuntimeException("can't make dirs in "
                     + file.getAbsolutePath());

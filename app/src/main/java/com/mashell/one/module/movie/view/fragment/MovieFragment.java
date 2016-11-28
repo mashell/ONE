@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.mashell.one.R;
 import com.mashell.one.base.BaseFragment;
+import com.mashell.one.base.BasePresenter;
 
 /**
  * Created by mashell on 16/11/14.
@@ -28,5 +29,15 @@ public class MovieFragment extends BaseFragment {
     @Override
     public int bindLayout() {
         return R.layout.fragment_movie;
+    }
+
+    @Override
+    public void initView() {
+
+    }
+
+    @Override
+    public BasePresenter createMvpPresenter() {
+        return null;
     }
 }

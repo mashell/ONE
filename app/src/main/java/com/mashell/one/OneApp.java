@@ -1,4 +1,4 @@
-package com.mashell.one.base;
+package com.mashell.one;
 
 import android.app.Activity;
 import android.app.Application;
@@ -16,10 +16,10 @@ import java.util.List;
  * Github: https://github.com/mashell
  */
 
-public class BaseApplication extends Application {
+public class OneApp extends Application {
     public static boolean isDebug;
     public static String APP_NAME;
-    private static BaseApplication mApplication;
+    private static OneApp mApplication;
     //缓存目录
     public static String cacheDir = "";
     //存放activity的List集合
@@ -46,7 +46,7 @@ public class BaseApplication extends Application {
      *
      * @return
      */
-    public static BaseApplication getInstance() {
+    public static OneApp getInstance() {
         return mApplication;
     }
 

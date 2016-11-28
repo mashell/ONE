@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +11,16 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.mashell.one.OneApp;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+
 import butterknife.ButterKnife;
 
 /**
  * BaseActivity 链接 https://www.zhihu.com/question/47045239/answer/105086885
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatActivity {
     protected String TAG;
     //是否Debug模式
     private boolean isDebug;
@@ -31,17 +33,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     //是否允许旋转屏幕
     private boolean ifAllowScreenRotate = true;
 
+    protected P mvpPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TAG = this.getClass().getSimpleName();
-        isDebug = BaseApplication.isDebug;
-        APP_NAME = BaseApplication.APP_NAME;
-        ButterKnife.bind(this);
-
+        isDebug = OneApp.isDebug;
+        APP_NAME = OneApp.APP_NAME;
+        mvpPresenter = createPresenter();
         try {
             Bundle bundle = getIntent().getExtras();
-            initParams(bundle);
             mContextView = LayoutInflater.from(this).inflate(bindLayout(), null);
 
             if (ifAllowFullScreen) {
@@ -67,7 +69,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        BaseApplication.getInstance().addActivity(this);
+        OneApp.getInstance().addActivity(this);
+        ButterKnife.bind(this);
     }
 
     private void setStatusBar() {
@@ -85,9 +88,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int bindLayout();
 
     /**
-     * [绑定布局]
+     * [初始化Presenter]
      */
-    public abstract void initParams(Bundle params);
+    public abstract P createPresenter();
 
     public View getContentView() {
         return mContextView;
@@ -194,6 +197,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BaseApplication.getInstance().removeActivity(this);
+        if (mvpPresenter != null)
+            mvpPresenter.detachView();
+        OneApp.getInstance().removeActivity(this);
     }
 }

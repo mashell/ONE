@@ -1,4 +1,4 @@
-package com.mashell.one.module.home.model;
+package com.mashell.one.module.home.bean;
 
 import com.google.gson.annotations.SerializedName;
 

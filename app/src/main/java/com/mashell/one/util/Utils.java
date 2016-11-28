@@ -3,6 +3,7 @@ package com.mashell.one.util;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 
 /**
  * Created by mashell on 16/11/13.
@@ -13,11 +14,11 @@ import android.content.pm.PackageManager;
 public class Utils {
 
     //判断当前应用是否debug状态
-    public static boolean isApkInDebug(Context context){
-        try{
+    public static boolean isApkInDebug(Context context) {
+        try {
             ApplicationInfo info = context.getApplicationInfo();
-            return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0 ;
-        }catch (Exception e){
+            return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        } catch (Exception e) {
             return false;
         }
     }
@@ -33,5 +34,13 @@ public class Utils {
             applicationInfo = null;
         }
         return (String) packageManager.getApplicationLabel(applicationInfo);
+    }
+
+    public static String safeText(String string) {
+        return TextUtils.isEmpty(string) ? "未知" : string;
+    }
+
+    public static String safeText(int intString) {
+        return safeText(String.valueOf(intString));
     }
 }

@@ -1,4 +1,4 @@
-package com.mashell.one.module.music.view.fragment;
+package com.mashell.one.module.home.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,12 +11,12 @@ import com.mashell.one.base.BaseFragment;
 import com.mashell.one.base.BasePresenter;
 
 /**
- * Created by mashell on 16/11/14.
+ * Created by mashell on 16/11/24.
  * Email: mashell624@163.com
  * Github: https://github.com/mashell
  */
 
-public class MusicFragment extends BaseFragment {
+public class RightMostFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +29,13 @@ public class MusicFragment extends BaseFragment {
     }
 
     @Override
-    public int bindLayout() {
-        return R.layout.fragment_music;
+    public void initView() {
+
     }
 
     @Override
-    public void initView() {
-
+    public int bindLayout() {
+        return R.layout.fragment_right_most;
     }
 
     @Override
