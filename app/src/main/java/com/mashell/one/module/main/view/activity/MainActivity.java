@@ -45,13 +45,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
     ImageView imgMovie;
     @BindView(R.id.imgMusic)
     ImageView imgMusic;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFragmentManager = getSupportFragmentManager();
         setTabStatus(C.T_HOME);
-
     }
 
     @OnClick({R.id.imgHome, R.id.imgRead, R.id.imgMusic, R.id.imgMovie})
