@@ -29,7 +29,7 @@ import com.mashell.one.R;
  * 具体可参照com.campussay.modules.user.center.ui.messageActivity.ui.AllMessageActivity中的186行
  */
 public class LoadMoreRecyclerView extends RecyclerView {
-    
+
     public int currentStatus = NO_MORE;
 
     public static final int NO_MORE = 100;
