@@ -46,7 +46,7 @@ public class OneApp extends Application {
      *
      * @return
      */
-    public static OneApp getInstance() {
+    public static OneApp getContext() {
         return mApplication;
     }
 

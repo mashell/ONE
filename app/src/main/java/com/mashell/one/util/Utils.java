@@ -5,6 +5,13 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
+import com.mashell.one.C;
+import com.mashell.one.module.main.model.Month;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 /**
  * Created by mashell on 16/11/13.
  * Email: mashell624@163.com
@@ -42,5 +49,28 @@ public class Utils {
 
     public static String safeText(int intString) {
         return safeText(String.valueOf(intString));
+    }
+
+    /**
+     * 根据最早时间返回Month的List列表
+     */
+
+    public static List<Month> getMonthList(Calendar calendar, int type) {
+        int nowYear = calendar.get(Calendar.YEAR);
+        int nowMonth = calendar.get(Calendar.MONTH);
+        int number;
+        List<Month> monthList = new ArrayList<>();
+        if (type == C.LONG_TYPE) {
+            number = (nowYear - 2012) * 12 + (nowMonth - 9);
+        } else {
+            number = (nowYear - 2016) * 12 + nowMonth;
+        }
+
+        for (int i = number;i>0;i--){
+            calendar.add(Calendar.MONTH,-1);
+            Month month = new Month(calendar.get(Calendar.YEAR)+"-"+calendar.get(Calendar.MONTH), TimeUtil.formatOne(calendar));
+            monthList.add(month);
+        }
+        return monthList;
     }
 }

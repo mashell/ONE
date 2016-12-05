@@ -1,6 +1,5 @@
 package com.mashell.one.base;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -69,8 +68,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
             e.printStackTrace();
         }
 
-        OneApp.getInstance().addActivity(this);
+        OneApp.getContext().addActivity(this);
         ButterKnife.bind(this);
+        initView();
     }
 
     private void setStatusBar() {
@@ -81,6 +81,10 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
+    /**
+     * [初始化]
+     */
+    public abstract void initView();
 
     /**
      * [绑定布局]
@@ -108,37 +112,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
      */
     public void showLongToast(String toast) {
         Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
-    }
-
-    /**
-     * [页面跳转]
-     */
-    public void startActivity(Class<?> clz) {
-        startActivity(clz, null);
-    }
-
-    /**
-     * [携带数据的页面跳转]
-     */
-    public void startActivity(Class<?> clz, Bundle bundle) {
-        Intent intent = new Intent();
-        intent.setClass(this, clz);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        startActivity(intent);
-    }
-
-    /**
-     * [含有Bundle的request跳转]
-     */
-    public void startActivityForResult(Class<?> cls, Bundle bundle, int requestCode) {
-        Intent intent = new Intent();
-        intent.setClass(this, cls);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        startActivityForResult(intent, requestCode);
     }
 
     /**
@@ -180,25 +153,10 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mvpPresenter != null)
             mvpPresenter.detachView();
-        OneApp.getInstance().removeActivity(this);
+        OneApp.getContext().removeActivity(this);
     }
 }

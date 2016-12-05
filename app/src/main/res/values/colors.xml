@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBar">#FFFFFF</color>
     <color name="alignLine">#dedede</color>
+    <color name="tab_selected">#7bc3e2</color>
+    <color name="tab_unselect">#000000</color>
 </resources>

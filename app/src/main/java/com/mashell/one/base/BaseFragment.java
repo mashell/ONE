@@ -1,9 +1,7 @@
 package com.mashell.one.base;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +23,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends com.trello.r
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("mashell", TAG + "-------onCreate");
     }
 
     @Nullable
@@ -35,75 +32,16 @@ public abstract class BaseFragment<P extends BasePresenter> extends com.trello.r
         ButterKnife.bind(this, mContextView);
         mvpPresenter = createMvpPresenter();
         initView();
-        Log.e("mashell", TAG + "-------onCreateView");
         return mContextView;
     }
 
     public abstract P createMvpPresenter();
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        Log.e("mashell", TAG + "-------onAttach");
-
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Log.e("mashell", TAG + "-------onViewCreated");
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.e("mashell", TAG + "-------onStart");
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.e("mashell", TAG + "-------onResume");
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.e("mashell", TAG + "-------onPause");
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.e("mashell", TAG + "-------onStop");
-
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.e("mashell", TAG + "-------onDestroyView");
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mvpPresenter != null)
-            mvpPresenter.detachView();
-        Log.e("mashell", TAG + "-------onDestroy");
-
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
-        Log.e("mashell", TAG + "-------onDetach");
-
+        if (mvpPresenter != null)
+            mvpPresenter.detachView();
     }
 
     /**

@@ -7,10 +7,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
+import com.mashell.one.C;
 import com.mashell.one.R;
 import com.mashell.one.base.BaseFragment;
 import com.mashell.one.module.home.contract.HomeContract;
 import com.mashell.one.module.home.presenter.HomePresenter;
+import com.mashell.one.module.home.view.activity.EarlyListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +65,7 @@ public class HomeFragment extends BaseFragment<HomeContract.IHomePresenter> impl
                     Toast.makeText(getActivity(),"正在刷新",Toast.LENGTH_SHORT).show();
                 } else if (position == fragmentList.size() - 1) {
                     fragmentViewPager.setCurrentItem(position - 1);
+                    getContext().startActivity(EarlyListActivity.getInstance(getContext(), C.TYPE_ONE));
                 }
             }
 
@@ -92,7 +95,6 @@ public class HomeFragment extends BaseFragment<HomeContract.IHomePresenter> impl
     public int bindLayout() {
         return R.layout.fragment_home;
     }
-
 
     class MyFragmentAdapter extends FragmentPagerAdapter {
         private List<Fragment> fragments;

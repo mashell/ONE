@@ -2,6 +2,7 @@ package com.mashell.one.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -20,14 +21,20 @@ public class TimeUtil {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return formatWeek(date)+formatOne(date);
+        return formatOne(date);
     }
 
     /**
      * 转ONE时间格式
      */
     public static String formatOne(Date date){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(" dd MMM.yyyy", Locale.ENGLISH);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE dd MMM.yyyy", Locale.ENGLISH);
+        return simpleDateFormat.format(date);
+    }
+
+    public static String formatOne(Calendar calendar){
+        Date date = calendar.getTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM.yyyy", Locale.ENGLISH);
         return simpleDateFormat.format(date);
     }
 

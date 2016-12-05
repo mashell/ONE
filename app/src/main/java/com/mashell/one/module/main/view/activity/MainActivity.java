@@ -1,6 +1,5 @@
 package com.mashell.one.module.main.view.activity;
 
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -47,8 +46,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
     ImageView imgMusic;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView() {
         mFragmentManager = getSupportFragmentManager();
         setTabStatus(C.T_HOME);
     }
@@ -86,9 +84,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
     private void setTabStatus(int position) {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
         recoveryButtonStatus(currentFragment);
+        changeStatus(position);
         switch (position) {
             case C.T_HOME:
-                changeStatus(C.T_HOME);
                 if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
                 }
@@ -96,7 +94,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
                 break;
 
             case C.T_READ:
-                changeStatus(C.T_READ);
                 if (mReadFragment == null) {
                     mReadFragment = new ReadFragment();
                 }
@@ -104,7 +101,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
                 break;
 
             case C.T_MUSIC:
-                changeStatus(C.T_MUSIC);
                 if (mMusicFragment == null) {
                     mMusicFragment = new MusicFragment();
                 }
@@ -112,7 +108,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
                 break;
 
             case C.T_MOVIE:
-                changeStatus(C.T_MOVIE);
                 if (mMovieFragment == null) {
                     mMovieFragment = new MovieFragment();
                 }
