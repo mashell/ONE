@@ -6,7 +6,9 @@ import android.widget.TextView;
 import com.mashell.one.R;
 import com.mashell.one.base.BaseViewHolder;
 import com.mashell.one.common.OnItemClickListener;
-import com.mashell.one.module.main.model.Month;
+import com.mashell.one.module.main.bean.Month;
+
+import butterknife.BindView;
 
 /**
  * Created by mashell on 16/11/30.
@@ -15,11 +17,11 @@ import com.mashell.one.module.main.model.Month;
  */
 
 public class EarlyViewHolder extends BaseViewHolder<Month> {
+    @BindView(R.id.early_date_txt)
     TextView dateTxt;
 
     public EarlyViewHolder(View view, OnItemClickListener mOnItemClickListener) {
         super(view,mOnItemClickListener);
-        dateTxt = (TextView)view.findViewById(R.id.early_date_txt);
     }
 
 

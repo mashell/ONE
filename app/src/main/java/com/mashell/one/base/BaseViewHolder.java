@@ -1,9 +1,12 @@
 package com.mashell.one.base;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.mashell.one.common.OnItemClickListener;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by mashell on 16/11/30.
@@ -17,6 +20,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder implemen
 
     public BaseViewHolder(View itemView, OnItemClickListener mOnItemClickListener) {
         super(itemView);
+        ButterKnife.bind(this,itemView);
         this.mOnItemClickListener = mOnItemClickListener;
         itemView.setOnClickListener(this);
     }
@@ -27,5 +31,9 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder implemen
     public void onClick(View v) {
         if ( mOnItemClickListener != null)
             mOnItemClickListener.onClick(itemView,getAdapterPosition());
+    }
+
+    public Context getContext(){
+        return itemView.getContext();
     }
 }

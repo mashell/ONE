@@ -1,6 +1,7 @@
 package com.mashell.one.common;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.mashell.one.OneApp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -38,8 +40,8 @@ public class RetrofitInstance {
         //带上token则 addNetworkInterceptor
         //https://drakeet.me/retrofit-2-0-okhttp-3-0-config
 
-        // HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        //loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         //Cookie的持久化管理，为每次请求带上cookie
         //http://blog.csdn.net/lyhhj/article/details/51388147
@@ -61,7 +63,7 @@ public class RetrofitInstance {
         };
 
         mOkHttpClient = new OkHttpClient.Builder()
-//                .addInterceptor(OneApp.isDebug ? loggingInterceptor : null)
+                .addInterceptor(OneApp.isDebug ? loggingInterceptor : null)
                 .cookieJar(mCookieJar)
                 .addNetworkInterceptor(new StethoInterceptor())
                 .retryOnConnectionFailure(true)

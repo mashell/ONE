@@ -2,7 +2,7 @@ package com.mashell.one.module.home.model;
 
 import com.mashell.one.C;
 import com.mashell.one.module.home.contract.EarlyListContract;
-import com.mashell.one.module.main.model.Month;
+import com.mashell.one.module.main.bean.Month;
 import com.mashell.one.util.Utils;
 
 import java.util.Calendar;

@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  * Github: https://github.com/mashell
  */
 
-public class OneListByMonth {
+public class OneMonth {
 
     @SerializedName("hpcontent_id")
     public String hpcontentId;

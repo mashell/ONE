@@ -2,13 +2,12 @@ package com.mashell.one.module.home.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.mashell.one.R;
 import com.mashell.one.common.OnItemClickListener;
 import com.mashell.one.module.home.viewholder.EarlyViewHolder;
-import com.mashell.one.module.main.model.Month;
+import com.mashell.one.module.main.bean.Month;
 
 import java.util.List;
 
@@ -34,8 +33,7 @@ public class EarlyAdapter extends RecyclerView.Adapter<EarlyViewHolder> {
 
     @Override
     public EarlyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_early_list,parent,false);
-        return new EarlyViewHolder(itemView, mOnItemClickListener);
+        return new EarlyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_early_list, parent, false), mOnItemClickListener);
     }
 
     @Override
@@ -44,8 +42,8 @@ public class EarlyAdapter extends RecyclerView.Adapter<EarlyViewHolder> {
     }
 
 
-    public String getEarlyListValue(int position) {
-        return datas.get(position).monthValue;
+    public Month getEarlyListObj(int position) {
+        return datas.get(position);
     }
 
 

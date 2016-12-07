@@ -2,11 +2,11 @@ package com.mashell.one.module.home.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,7 +17,6 @@ import com.mashell.one.common.OnItemClickListener;
 import com.mashell.one.module.home.adapter.EarlyAdapter;
 import com.mashell.one.module.home.contract.EarlyListContract;
 import com.mashell.one.module.home.presenter.EarlyListPresenter;
-import com.mashell.one.util.ToastUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -30,7 +29,6 @@ import rx.Observable;
  */
 
 public class EarlyListActivity extends BaseActivity<EarlyListPresenter> implements EarlyListContract.IEarlyListView {
-    @Nullable
     @BindView(R.id.earlyRecyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.tabEssay)
@@ -41,6 +39,8 @@ public class EarlyListActivity extends BaseActivity<EarlyListPresenter> implemen
     TextView tabQuestion;
     @BindView(R.id.tabContainer)
     LinearLayout tabContainer;
+    @BindView(R.id.backButton)
+    ImageView backButton;
 
     private int intentType;
     private int currentTab;
@@ -53,7 +53,7 @@ public class EarlyListActivity extends BaseActivity<EarlyListPresenter> implemen
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                ToastUtil.show(adapter.getEarlyListValue(position));
+                startActivity(MonthListActivity.getIntent(EarlyListActivity.this,intentType,adapter.getEarlyListObj(position)));
             }
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -66,7 +66,7 @@ public class EarlyListActivity extends BaseActivity<EarlyListPresenter> implemen
             tabContainer.setVisibility(View.VISIBLE);
     }
 
-    @OnClick({R.id.tabQuestion,R.id.tabEssay,R.id.tabSerial})
+    @OnClick({R.id.tabQuestion,R.id.tabEssay,R.id.tabSerial,R.id.backButton})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tabEssay:
@@ -79,6 +79,10 @@ public class EarlyListActivity extends BaseActivity<EarlyListPresenter> implemen
 
             case R.id.tabQuestion:
                 setTabStatus(C.TYPE_TAB_QUESTION);
+                break;
+
+            case R.id.backButton:
+                finish();
                 break;
         }
     }

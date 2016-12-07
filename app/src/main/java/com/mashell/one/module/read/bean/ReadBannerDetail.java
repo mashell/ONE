@@ -1,9 +1,8 @@
-package com.mashell.one.module.read.model;
+package com.mashell.one.module.read.bean;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by mashell on 16/11/21.

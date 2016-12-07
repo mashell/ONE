@@ -1,4 +1,4 @@
-package com.mashell.one.module.movie.model;
+package com.mashell.one.module.movie.bean;
 
 import com.google.gson.annotations.SerializedName;
 

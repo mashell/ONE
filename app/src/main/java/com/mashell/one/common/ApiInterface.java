@@ -3,22 +3,22 @@ package com.mashell.one.common;
 import com.mashell.one.base.BaseResult;
 
 import com.mashell.one.module.home.bean.OneDetail;
-import com.mashell.one.module.home.bean.OneListByMonth;
-import com.mashell.one.module.main.model.Comment;
-import com.mashell.one.module.movie.model.MovieDetail;
-import com.mashell.one.module.movie.model.MovieStory;
-import com.mashell.one.module.movie.model.MovieItem;
-import com.mashell.one.module.music.model.MusicDetail;
-import com.mashell.one.module.music.model.MusicItem;
-import com.mashell.one.module.read.model.EssayDetail;
-import com.mashell.one.module.read.model.EssayItem;
-import com.mashell.one.module.read.model.QuestionDetail;
-import com.mashell.one.module.read.model.QuestionItem;
-import com.mashell.one.module.read.model.ReadArticleList;
-import com.mashell.one.module.read.model.ReadBanner;
-import com.mashell.one.module.read.model.ReadBannerDetail;
-import com.mashell.one.module.read.model.SerialDetail;
-import com.mashell.one.module.read.model.SerialItem;
+import com.mashell.one.module.home.bean.OneMonth;
+import com.mashell.one.module.main.bean.Comment;
+import com.mashell.one.module.movie.bean.MovieDetail;
+import com.mashell.one.module.movie.bean.MovieStory;
+import com.mashell.one.module.movie.bean.MovieItem;
+import com.mashell.one.module.music.bean.MusicDetail;
+import com.mashell.one.module.music.bean.MusicMonth;
+import com.mashell.one.module.read.bean.EssayDetail;
+import com.mashell.one.module.read.bean.EssayItem;
+import com.mashell.one.module.read.bean.QuestionDetail;
+import com.mashell.one.module.read.bean.QuestionItem;
+import com.mashell.one.module.read.bean.ReadArticleList;
+import com.mashell.one.module.read.bean.ReadBanner;
+import com.mashell.one.module.read.bean.ReadBannerDetail;
+import com.mashell.one.module.read.bean.SerialDetail;
+import com.mashell.one.module.read.bean.SerialItem;
 
 import java.util.List;
 
@@ -50,7 +50,7 @@ public interface ApiInterface {
 
     //根据年份获取图文详细列表
     @GET("api/hp/bymonth/{month}")
-    Observable<BaseResult<OneListByMonth>> getOneByMonth(@Path("month")String month);
+    Observable<BaseResult<List<OneMonth>>> getOneByMonth(@Path("month")String month);
 
     /**
      * 阅读模块接口
@@ -106,7 +106,7 @@ public interface ApiInterface {
 
     //根据月份获取音乐列表
     @GET("api/music/bymonth/{month}")
-    Observable<BaseResult<List<MusicItem>>> getMusicItemList(@Path("month")String month);
+    Observable<BaseResult<List<MusicMonth>>> getMusicItemList(@Path("month")String month);
 
     /**
      * 电影模块接口

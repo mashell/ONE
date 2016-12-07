@@ -19,7 +19,7 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/home_border"
+                android:background="@drawable/border_fillter"
                 android:padding="@dimen/fragment_home_card_margin"
                 >
             <ImageView

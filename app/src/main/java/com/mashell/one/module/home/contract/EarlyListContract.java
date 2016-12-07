@@ -3,7 +3,7 @@ package com.mashell.one.module.home.contract;
 import com.mashell.one.base.BaseModel;
 import com.mashell.one.base.BasePresenter;
 import com.mashell.one.base.BaseView;
-import com.mashell.one.module.main.model.Month;
+import com.mashell.one.module.main.bean.Month;
 
 import java.util.List;
 

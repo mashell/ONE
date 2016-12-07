@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
 import com.mashell.one.C;
-import com.mashell.one.module.main.model.Month;
+import com.mashell.one.module.main.bean.Month;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -66,10 +66,16 @@ public class Utils {
             number = (nowYear - 2016) * 12 + nowMonth;
         }
 
-        for (int i = number;i>0;i--){
-            calendar.add(Calendar.MONTH,-1);
-            Month month = new Month(calendar.get(Calendar.YEAR)+"-"+calendar.get(Calendar.MONTH), TimeUtil.formatOne(calendar));
-            monthList.add(month);
+        for (int i = number; i > 0; i--) {
+            if (i == number) {
+                calendar.add(Calendar.MONTH, -1);
+                Month month = new Month(calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH), "本月");
+                monthList.add(month);
+            } else {
+                calendar.add(Calendar.MONTH, -1);
+                Month month = new Month(calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH), TimeUtil.formatOne(calendar));
+                monthList.add(month);
+            }
         }
         return monthList;
     }

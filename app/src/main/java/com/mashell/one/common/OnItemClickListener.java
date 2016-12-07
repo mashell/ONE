@@ -8,7 +8,7 @@ import android.view.View;
  * Github: https://github.com/mashell
  */
 
-public interface OnItemClickListener<T> {
+public interface OnItemClickListener {
 
     void onClick(View view, int position);
 }

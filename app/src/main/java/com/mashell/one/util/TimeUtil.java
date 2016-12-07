@@ -13,7 +13,28 @@ import java.util.Locale;
  */
 
 public class TimeUtil {
-    public static String formatTime(String time) {
+    /**
+     * 带星期显示的ONE时间格式
+     * @param time
+     * @return
+     */
+    public static String formatTimeShort(String time) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.ENGLISH);
+        Date date = null;
+        try {
+            date = format.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formatOne(date);
+    }
+
+    /**
+     * 不带星期显示的ONE时间格式
+     * @param time
+     * @return
+     */
+    public static String formatTimeLong(String time) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.ENGLISH);
         Date date = null;
         try {

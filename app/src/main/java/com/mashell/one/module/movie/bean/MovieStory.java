@@ -1,8 +1,8 @@
-package com.mashell.one.module.movie.model;
+package com.mashell.one.module.movie.bean;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.mashell.one.module.main.model.UserBean;
+import com.mashell.one.module.main.bean.UserBean;
 
 import java.io.Serializable;
 import java.util.List;

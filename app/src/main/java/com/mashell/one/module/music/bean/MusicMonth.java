@@ -1,9 +1,10 @@
-package com.mashell.one.module.read.model;
+package com.mashell.one.module.music.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import com.mashell.one.module.main.bean.UserBean;
+
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by mashell on 16/11/21.
@@ -11,7 +12,7 @@ import java.util.List;
  * Github: https://github.com/mashell
  */
 
-public class ReadBanner implements Serializable {
+public class MusicMonth implements Serializable {
 
     @SerializedName("id")
     public String id;
@@ -19,11 +20,11 @@ public class ReadBanner implements Serializable {
     public String title;
     @SerializedName("cover")
     public String cover;
-    @SerializedName("bottom_text")
-    public String bottomText;
-    @SerializedName("bgcolor")
-    public String bgcolor;
-    @SerializedName("pv_url")
-    public String pvUrl;
+    @SerializedName("platform")
+    public String platform;
+    @SerializedName("music_id")
+    public String musicId;
+    @SerializedName("author")
+    public UserBean author;
 
 }

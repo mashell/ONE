@@ -1,8 +1,8 @@
-package com.mashell.one.module.music.model;
+package com.mashell.one.module.music.bean;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.mashell.one.module.main.model.UserBean;
+import com.mashell.one.module.main.bean.UserBean;
 
 /**
  * Created by mashell on 16/11/21.

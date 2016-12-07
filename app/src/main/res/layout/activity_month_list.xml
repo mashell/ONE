@@ -20,9 +20,9 @@
                 android:layout_marginStart="10dp"
                 />
         <TextView
+                android:id="@+id/monthTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/early_list"
                 android:textSize="18sp"
                 android:layout_centerInParent="true"
                 />
@@ -34,41 +34,8 @@
                 />
     </RelativeLayout>
 
-    <LinearLayout
-            android:id="@+id/tabContainer"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            >
-        <TextView
-                android:id="@+id/tabEssay"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/tab_essay"
-                />
-        <TextView
-                android:id="@+id/tabSerial"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/tab_serial"
-                />
-        <TextView
-                android:id="@+id/tabQuestion"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/tab_question"
-                />
-    </LinearLayout>
-
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/earlyRecyclerView"
+            android:id="@+id/monthRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />

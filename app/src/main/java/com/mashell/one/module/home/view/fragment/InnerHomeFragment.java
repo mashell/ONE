@@ -85,7 +85,7 @@ public class InnerHomeFragment extends BaseFragment<InnerHomeContract.IInnerPres
         homeTitle.setText(detail.hpTitle);
         homeAuthor.setText(detail.hpAuthor);
         homeContent.setText(detail.hpContent);
-        homeTime.setText(TimeUtil.formatTime(detail.hpMakettime));
+        homeTime.setText(TimeUtil.formatTimeLong(detail.hpMakettime));
         homeNum.setText(Utils.safeText(detail.praisenum));
         Glide.with(this).load(detail.hpImgUrl).placeholder(R.mipmap.default_hp_image).into(homeImg);
     }
