@@ -47,7 +47,6 @@ public class HomeFragment extends BaseFragment<HomeContract.IHomePresenter> impl
             fragmentList.add(InnerHomeFragment.getInstance(idList.get(i)));
         }
         fragmentList.add(rightMostFragment);
-
         MyFragmentAdapter adapter = new MyFragmentAdapter(getChildFragmentManager(), fragmentList);
         fragmentViewPager.setAdapter(adapter);
         fragmentViewPager.setCurrentItem(1);

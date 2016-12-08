@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".module.home.view.activity.EarlyListActivity"/>
         <activity android:name=".module.home.view.activity.MonthListActivity"/>
+        <activity android:name=".module.home.view.activity.OneDetailActivity"/>
     </application>
 
 </manifest>

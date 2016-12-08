@@ -61,7 +61,6 @@ public class InnerHomeFragment extends BaseFragment<InnerHomeContract.IInnerPres
         mvpPresenter.getOneDetail(oneId);
     }
 
-
     @Override
     public int bindLayout() {
         return R.layout.fragment_innner_home;

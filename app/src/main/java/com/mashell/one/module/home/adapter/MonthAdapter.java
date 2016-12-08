@@ -37,6 +37,10 @@ public class MonthAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.datas = datas;
     }
 
+    public T getDatas(int position){
+        return datas.get(position);
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 

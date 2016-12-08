@@ -2,8 +2,6 @@ package com.mashell.one.module.home.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,8 +10,10 @@ import android.widget.TextView;
 
 import com.mashell.one.R;
 import com.mashell.one.base.BaseActivity;
+import com.mashell.one.common.OnItemClickListener;
 import com.mashell.one.component.SpaceItemDecoration;
 import com.mashell.one.module.home.adapter.MonthAdapter;
+import com.mashell.one.module.home.bean.OneMonth;
 import com.mashell.one.module.home.contract.MonthContract;
 import com.mashell.one.module.home.presenter.MonthPresenter;
 import com.mashell.one.module.main.bean.Month;
@@ -43,19 +43,19 @@ public class MonthListActivity<T> extends BaseActivity<MonthPresenter> implement
     private List<T> datas;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void initView() {
         int intentType= getIntent().getIntExtra("intentType",0);
         Month month = (Month) getIntent().getSerializableExtra("intentTitle");
         datas = new ArrayList<>();
         monthTitle.setText(Utils.safeText(month.monthKey));
         adapter = new MonthAdapter<>(datas,intentType, month.monthValue);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                startActivity(OneDetailActivity.getIntent(MonthListActivity.this,((OneMonth)adapter.getDatas(position)).hpcontentId));
+            }
+        });
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new SpaceItemDecoration(8));
         mRecyclerView.setAdapter(adapter);
         mvpPresenter.getOneList(month.monthValue,intentType);
