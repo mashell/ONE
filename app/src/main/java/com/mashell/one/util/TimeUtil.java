@@ -26,7 +26,7 @@ public class TimeUtil {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return formatOne(date);
+        return formatOneShort(date);
     }
 
     /**
@@ -42,13 +42,21 @@ public class TimeUtil {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return formatOne(date);
+        return formatOneLong(date);
     }
 
     /**
      * 转ONE时间格式
      */
-    public static String formatOne(Date date){
+    public static String formatOneShort(Date date){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM.yyyy", Locale.ENGLISH);
+        return simpleDateFormat.format(date);
+    }
+
+    /**
+     * 转ONE时间格式
+     */
+    public static String formatOneLong(Date date){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE dd MMM.yyyy", Locale.ENGLISH);
         return simpleDateFormat.format(date);
     }

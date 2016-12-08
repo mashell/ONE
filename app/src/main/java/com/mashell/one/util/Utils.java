@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+
 /**
  * Created by mashell on 16/11/13.
  * Email: mashell624@163.com
@@ -68,14 +69,13 @@ public class Utils {
 
         for (int i = number; i > 0; i--) {
             if (i == number) {
-                calendar.add(Calendar.MONTH, -1);
-                Month month = new Month(calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH), "本月");
+                Month month = new Month(calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1), "本月");
                 monthList.add(month);
             } else {
-                calendar.add(Calendar.MONTH, -1);
-                Month month = new Month(calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH), TimeUtil.formatOne(calendar));
+                Month month = new Month(calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1), TimeUtil.formatOne(calendar));
                 monthList.add(month);
             }
+            calendar.add(Calendar.MONTH, -1);
         }
         return monthList;
     }

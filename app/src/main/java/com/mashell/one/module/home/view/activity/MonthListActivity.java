@@ -3,6 +3,7 @@ package com.mashell.one.module.home.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -54,6 +55,7 @@ public class MonthListActivity<T> extends BaseActivity<MonthPresenter> implement
         monthTitle.setText(Utils.safeText(month.monthKey));
         adapter = new MonthAdapter<>(datas,intentType, month.monthValue);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new SpaceItemDecoration(8));
         mRecyclerView.setAdapter(adapter);
         mvpPresenter.getOneList(month.monthValue,intentType);
