@@ -1,4 +1,4 @@
-package com.mashell.one;
+package com.mashell.one.base;
 
 import android.app.Activity;
 import android.app.Application;

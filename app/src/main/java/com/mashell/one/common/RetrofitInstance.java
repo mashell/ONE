@@ -1,7 +1,7 @@
 package com.mashell.one.common;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.mashell.one.OneApp;
+import com.mashell.one.base.OneApp;
 
 import java.util.ArrayList;
 import java.util.HashMap;

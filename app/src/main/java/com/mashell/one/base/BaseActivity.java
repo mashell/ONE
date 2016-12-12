@@ -10,10 +10,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.mashell.one.OneApp;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * BaseActivity 链接 https://www.zhihu.com/question/47045239/answer/105086885
@@ -22,43 +22,43 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatActivity {
     protected String TAG;
     //是否Debug模式
-    private boolean isDebug;
-    private String APP_NAME;
+    private boolean mIsDebug = OneApp.isDebug;
+    private final String APP_NAME = OneApp.APP_NAME;
+
     private View mContextView = null;
     //是否沉浸状态栏
-    private boolean ifSetStatusBar = true;
+    private boolean mIfSetStatusBar = true;
     //是否允许全屏
-    private boolean ifAllowFullScreen = false;
+    private boolean mIfAllowFullScreen = false;
     //是否允许旋转屏幕
-    private boolean ifAllowScreenRotate = true;
+    private boolean mIfAllowScreenRotate = true;
 
     protected P mvpPresenter;
+    private Unbinder mUnBinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TAG = this.getClass().getSimpleName();
-        isDebug = OneApp.isDebug;
-        APP_NAME = OneApp.APP_NAME;
         mvpPresenter = createPresenter();
         try {
-            Bundle bundle = getIntent().getExtras();
+            Bundle bunSdle = getIntent().getExtras();
             mContextView = LayoutInflater.from(this).inflate(bindLayout(), null);
 
-            if (ifAllowFullScreen) {
+            if (mIfAllowFullScreen) {
                 this.getWindow()
                         .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 requestWindowFeature(Window.FEATURE_NO_TITLE);
             }
 
-            if (ifSetStatusBar) {
+            if (mIfSetStatusBar) {
                 setStatusBar();
             }
 
             setContentView(mContextView);
 
-            if (!ifAllowScreenRotate) {
+            if (!mIfAllowScreenRotate) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             } else {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -69,7 +69,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         }
 
         OneApp.getContext().addActivity(this);
-        ButterKnife.bind(this);
+        mUnBinder = ButterKnife.bind(this);
         initView();
     }
 
@@ -81,6 +81,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
+
     /**
      * [初始化]
      */
@@ -120,7 +121,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
      * @param allowFullScreen 是否允许全屏
      */
     public void setAllowFullScreen(boolean allowFullScreen) {
-        this.ifAllowScreenRotate = allowFullScreen;
+        this.mIfAllowScreenRotate = allowFullScreen;
     }
 
     /**
@@ -129,7 +130,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
      * @param isSetStatusBar 是否设置沉浸状态栏
      */
     public void setSteepStatusBar(boolean isSetStatusBar) {
-        this.ifSetStatusBar = isSetStatusBar;
+        this.mIfSetStatusBar = isSetStatusBar;
     }
 
     /**
@@ -138,7 +139,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
      * @param ifAllowFullScreen 是否允许屏幕旋转
      */
     public void setScreenRoate(boolean ifAllowFullScreen) {
-        this.ifAllowFullScreen = ifAllowFullScreen;
+        this.mIfAllowFullScreen = ifAllowFullScreen;
     }
 
     /**
@@ -147,7 +148,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
      * @param msg 日志信息
      */
     protected void $Log(String msg) {
-        if (isDebug) {
+        if (mIsDebug) {
             Log.d(APP_NAME, msg);
         }
     }
@@ -157,6 +158,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
         super.onDestroy();
         if (mvpPresenter != null)
             mvpPresenter.detachView();
+        mUnBinder.unbind();
         OneApp.getContext().removeActivity(this);
     }
 }

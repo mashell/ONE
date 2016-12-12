@@ -16,7 +16,7 @@ public abstract class BasePresenter<V,M> {
 
     //建立关联
     public void attachView(V view) {
-        mViewRef = new WeakReference<V>(view);
+        mViewRef = new WeakReference<>(view);
     }
 
     //获取view

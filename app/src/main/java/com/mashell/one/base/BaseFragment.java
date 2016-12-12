@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 /**
@@ -19,6 +20,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends com.trello.r
     private View mContextView = null;
     private String TAG = this.getClass().getSimpleName();
     protected P mvpPresenter;
+    private Unbinder mUnbinder;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends com.trello.r
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContextView = inflater.inflate(bindLayout(), container, false);
-        ButterKnife.bind(this, mContextView);
+        mUnbinder = ButterKnife.bind(this, mContextView);
         mvpPresenter = createMvpPresenter();
         initView();
         return mContextView;
@@ -42,6 +44,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends com.trello.r
         super.onDetach();
         if (mvpPresenter != null)
             mvpPresenter.detachView();
+        mUnbinder.unbind();
     }
 
     /**

@@ -3,7 +3,7 @@ package com.mashell.one.util;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
 
-import com.mashell.one.OneApp;
+import com.mashell.one.base.OneApp;
 
 /**
  * Created by HugoXie on 16/5/20.

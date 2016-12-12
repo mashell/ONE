@@ -8,7 +8,17 @@ import android.view.ViewGroup;
 
 import com.mashell.one.R;
 import com.mashell.one.base.BaseFragment;
-import com.mashell.one.base.BasePresenter;
+import com.mashell.one.component.GlideImageLoader;
+import com.mashell.one.module.read.contract.ReadContract;
+import com.mashell.one.module.read.presenter.ReadPresenter;
+import com.youth.banner.Banner;
+
+import java.util.List;
+
+import butterknife.BindView;
+import rx.Observable;
+
+import static com.mashell.one.R.id.readBanner;
 
 /**
  * Created by mashell on 16/11/14.
@@ -16,7 +26,10 @@ import com.mashell.one.base.BasePresenter;
  * Github: https://github.com/mashell
  */
 
-public class ReadFragment extends BaseFragment {
+public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadContract.IReadView {
+    @BindView(readBanner)
+    Banner mBanner;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +48,23 @@ public class ReadFragment extends BaseFragment {
 
     @Override
     public void initView() {
-
+        mvpPresenter.getBanner();
     }
 
     @Override
-    public BasePresenter createMvpPresenter() {
-        return null;
+    public void initBannerData(List<String> bannerData) {
+        mBanner.setImageLoader(new GlideImageLoader());
+        mBanner.setImages(bannerData);
+        mBanner.start();
     }
 
+    @Override
+    public ReadPresenter createMvpPresenter() {
+        return new ReadPresenter(this);
+    }
 
+    @Override
+    public <V> Observable.Transformer<V, V> bind() {
+        return this.bindToLifecycle();
+    }
 }

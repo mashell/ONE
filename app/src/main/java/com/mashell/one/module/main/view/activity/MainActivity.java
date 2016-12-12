@@ -45,6 +45,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
     @BindView(R.id.imgMusic)
     ImageView imgMusic;
 
+
+
+
     @Override
     public void initView() {
         mFragmentManager = getSupportFragmentManager();

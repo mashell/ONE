@@ -58,6 +58,8 @@ dependencies {
     //RxLifeCycle
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
+    //Banner 库
+    compile 'com.youth.banner:banner:1.4.5'
 
 }
 
