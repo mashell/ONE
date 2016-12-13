@@ -2,14 +2,13 @@ package com.mashell.one.module.home.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
 import com.mashell.one.C;
 import com.mashell.one.R;
 import com.mashell.one.base.BaseFragment;
+import com.mashell.one.base.FragmentAdapter;
 import com.mashell.one.module.home.contract.HomeContract;
 import com.mashell.one.module.home.presenter.HomePresenter;
 import com.mashell.one.module.home.view.activity.EarlyListActivity;
@@ -47,7 +46,7 @@ public class HomeFragment extends BaseFragment<HomeContract.IHomePresenter> impl
             fragmentList.add(InnerHomeFragment.getInstance(idList.get(i)));
         }
         fragmentList.add(rightMostFragment);
-        MyFragmentAdapter adapter = new MyFragmentAdapter(getChildFragmentManager(), fragmentList);
+        FragmentAdapter adapter = new FragmentAdapter(getChildFragmentManager(), fragmentList);
         fragmentViewPager.setAdapter(adapter);
         fragmentViewPager.setCurrentItem(1);
         fragmentViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -60,7 +59,7 @@ public class HomeFragment extends BaseFragment<HomeContract.IHomePresenter> impl
             public void onPageSelected(int position) {
                 if (position == 0) {
                     fragmentViewPager.setCurrentItem(position + 1);
-                    mvpPresenter.getIdList();
+                    mPresenter.getIdList();
                     Toast.makeText(getActivity(),"正在刷新",Toast.LENGTH_SHORT).show();
                 } else if (position == fragmentList.size() - 1) {
                     fragmentViewPager.setCurrentItem(position - 1);
@@ -77,7 +76,7 @@ public class HomeFragment extends BaseFragment<HomeContract.IHomePresenter> impl
 
     @Override
     public void initView() {
-        mvpPresenter.getIdList();
+        mPresenter.getIdList();
     }
 
     @Override
@@ -95,22 +94,4 @@ public class HomeFragment extends BaseFragment<HomeContract.IHomePresenter> impl
         return R.layout.fragment_home;
     }
 
-    class MyFragmentAdapter extends FragmentPagerAdapter {
-        private List<Fragment> fragments;
-
-        public MyFragmentAdapter(FragmentManager fm, List<Fragment> fragments) {
-            super(fm);
-            this.fragments = fragments;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragments.size();
-        }
-    }
 }

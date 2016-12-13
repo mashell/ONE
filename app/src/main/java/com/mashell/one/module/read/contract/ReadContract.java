@@ -3,6 +3,7 @@ package com.mashell.one.module.read.contract;
 import com.mashell.one.base.BaseModel;
 import com.mashell.one.base.BasePresenter;
 import com.mashell.one.base.BaseView;
+import com.mashell.one.module.read.bean.ReadArticleList;
 import com.mashell.one.module.read.bean.ReadBanner;
 
 import java.util.List;
@@ -19,15 +20,16 @@ public interface ReadContract {
 
     interface IReadModel extends BaseModel{
         Observable<List<ReadBanner>> getBannerUrl();
-
+        Observable<ReadArticleList> getReadContent();
     }
 
     interface IReadView extends BaseView{
         void initBannerData(List<String> bannerData);
-
+        void initReadContent(ReadArticleList articleList);
     }
 
     abstract class IReadPresenter extends BasePresenter<IReadView,IReadModel>{
         public abstract void getBanner();
+        public abstract void getReadContent();
     }
 }

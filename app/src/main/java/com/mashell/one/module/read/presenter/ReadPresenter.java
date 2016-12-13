@@ -1,5 +1,6 @@
 package com.mashell.one.module.read.presenter;
 
+import com.mashell.one.module.read.bean.ReadArticleList;
 import com.mashell.one.module.read.bean.ReadBanner;
 import com.mashell.one.module.read.contract.ReadContract;
 import com.mashell.one.module.read.model.ReadModel;
@@ -44,6 +45,28 @@ public class ReadPresenter extends ReadContract.IReadPresenter {
                             bannerUrl.add(readBanners.get(i).cover);
                         }
                         getView().initBannerData(bannerUrl);
+                    }
+                });
+    }
+
+    @Override
+    public void getReadContent() {
+        mModel.getReadContent()
+                .compose(getView().<ReadArticleList>bind())
+                .subscribe(new Subscriber<ReadArticleList>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(ReadArticleList readArticleList) {
+                        getView().initReadContent(readArticleList);
                     }
                 });
     }

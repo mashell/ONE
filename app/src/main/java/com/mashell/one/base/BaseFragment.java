@@ -19,7 +19,7 @@ import butterknife.Unbinder;
 public abstract class BaseFragment<P extends BasePresenter> extends com.trello.rxlifecycle.components.support.RxFragment {
     private View mContextView = null;
     private String TAG = this.getClass().getSimpleName();
-    protected P mvpPresenter;
+    protected P mPresenter;
     private Unbinder mUnbinder;
 
     @Override
@@ -32,7 +32,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends com.trello.r
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContextView = inflater.inflate(bindLayout(), container, false);
         mUnbinder = ButterKnife.bind(this, mContextView);
-        mvpPresenter = createMvpPresenter();
+        mPresenter = createMvpPresenter();
         initView();
         return mContextView;
     }
@@ -42,8 +42,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends com.trello.r
     @Override
     public void onDetach() {
         super.onDetach();
-        if (mvpPresenter != null)
-            mvpPresenter.detachView();
+        if (mPresenter != null)
+            mPresenter.detachView();
         mUnbinder.unbind();
     }
 

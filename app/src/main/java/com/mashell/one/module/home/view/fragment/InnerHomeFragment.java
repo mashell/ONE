@@ -58,7 +58,7 @@ public class InnerHomeFragment extends BaseFragment<InnerHomeContract.IInnerPres
     @Override
     public void initView() {
         String oneId = getArguments().getString(INTENT_KEY);
-        mvpPresenter.getOneDetail(oneId);
+        mPresenter.getOneDetail(oneId);
     }
 
     @Override

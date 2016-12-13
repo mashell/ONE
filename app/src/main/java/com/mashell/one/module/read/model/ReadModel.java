@@ -2,6 +2,7 @@ package com.mashell.one.module.read.model;
 
 import com.mashell.one.base.BaseResult;
 import com.mashell.one.common.RetrofitInstance;
+import com.mashell.one.module.read.bean.ReadArticleList;
 import com.mashell.one.module.read.bean.ReadBanner;
 import com.mashell.one.module.read.contract.ReadContract;
 import com.mashell.one.util.RxUtils;
@@ -24,5 +25,12 @@ public class ReadModel implements ReadContract.IReadModel {
                 .getReadBanner()
                 .compose(RxUtils.<BaseResult<List<ReadBanner>>>defaultSchedulers())
                 .compose(RxUtils.<List<ReadBanner>>handleResult());
+    }
+
+    @Override
+    public Observable<ReadArticleList> getReadContent() {
+        return RetrofitInstance.getApiInterface().getReadArticleList()
+                .compose(RxUtils.<BaseResult<ReadArticleList>>defaultSchedulers())
+                .compose(RxUtils.<ReadArticleList>handleResult());
     }
 }
