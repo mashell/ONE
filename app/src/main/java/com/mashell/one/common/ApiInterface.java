@@ -62,7 +62,7 @@ public interface ApiInterface {
 
     //阅读模块banner的item详情
     @GET("api/reading/carousel/{id}")
-    Observable<BaseResult<List<ReadBannerDetail>>> getReadBannerDetail();
+    Observable<BaseResult<List<ReadBannerDetail>>> getReadBannerDetail(@Path("id")String id);
 
     //阅读模块获取最新文章列表
     @GET("api/reading/index")

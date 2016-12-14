@@ -1,162 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/border_fillter"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
+        android:padding="10dp"
         >
-
-    <RelativeLayout
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_fillter"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="50dp"
             >
-        <TextView
-                android:id="@+id/essayTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="深夜里的纵火犯"
-                android:textSize="18sp"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000000"
-                />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_essay"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/typeBlue"
-                android:textSize="12sp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:background="@drawable/border_text_type"
-                />
 
-        <TextView
-                android:id="@+id/essayAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/essayTitle"
-                tools:text="王老子"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000000"
-                />
-        <TextView
-                android:id="@+id/essayWord"
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/essayAuthor"
-                tools:text="一场同行的陌生旅途中，绝不会知道下一秒将要发生的事情。唯一可以预见的是，那不会是熟知的日常朝夕。"
-                android:textColor="#000000"
-                />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            >
-        <TextView
-                android:id="@+id/serialTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="深夜里的纵火犯"
-                android:textSize="18sp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="#000000"
-                />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_serial"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/typeBlue"
-                android:textSize="12sp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:background="@drawable/border_text_type"
-                />
+                >
 
-        <TextView
-                android:id="@+id/serialAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/serialTitle"
-                tools:text="王老子"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000000"
-                />
-        <TextView
-                android:id="@+id/serialWord"
+            <TextView
+                    android:id="@+id/essayTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="深夜里的纵火犯"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#000000"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_essay"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/typeBlue"
+                    android:textSize="12sp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:background="@drawable/border_text_type"
+                    />
+
+            <TextView
+                    android:id="@+id/essayAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/essayTitle"
+                    tools:text="王老子"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#000000"
+                    />
+            <TextView
+                    android:id="@+id/essayWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/essayAuthor"
+                    tools:text="一场同行的陌生旅途中，绝不会知道下一秒将要发生的事情。唯一可以预见的是，那不会是熟知的日常朝夕。"
+                    android:textColor="#000000"
+                    />
+
+        </RelativeLayout>
+
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/serialAuthor"
-                tools:text="一场同行的陌生旅途中，绝不会知道下一秒将要发生的事情。唯一可以预见的是，那不会是熟知的日常朝夕。"
-                android:textColor="#000000"
-                />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            >
-        <TextView
-                android:id="@+id/questionTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="深夜里的纵火犯"
-                android:textSize="18sp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="#000000"
-                />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_question"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/typeBlue"
-                android:textSize="12sp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:background="@drawable/border_text_type"
-                />
+                >
 
-        <TextView
-                android:id="@+id/questionAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/questionTitle"
-                tools:text="王老子"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000000"
-                />
-        <TextView
-                android:id="@+id/questionWord"
+            <TextView
+                    android:id="@+id/serialTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="深夜里的纵火犯"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#000000"
+                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_serial"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/typeBlue"
+                    android:textSize="12sp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:background="@drawable/border_text_type"
+                    />
+
+            <TextView
+                    android:id="@+id/serialAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/serialTitle"
+                    tools:text="王老子"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#000000"
+                    />
+            <TextView
+                    android:id="@+id/serialWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/serialAuthor"
+                    tools:text="一场同行的陌生旅途中，绝不会知道下一秒将要发生的事情。唯一可以预见的是，那不会是熟知的日常朝夕。"
+                    android:textColor="#000000"
+                    />
+
+        </RelativeLayout>
+
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/questionAuthor"
-                tools:text="一场同行的陌生旅途中，绝不会知道下一秒将要发生的事情。唯一可以预见的是，那不会是熟知的日常朝夕。"
-                android:textColor="#000000"
-                />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+            <TextView
+                    android:id="@+id/questionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="深夜里的纵火犯"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#000000"
+                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_question"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/typeBlue"
+                    android:textSize="12sp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:background="@drawable/border_text_type"
+                    />
 
-    </RelativeLayout>
+            <TextView
+                    android:id="@+id/questionAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/questionTitle"
+                    tools:text="王老子"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#000000"
+                    />
 
-</LinearLayout>
+            <TextView
+                    android:id="@+id/questionWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/questionAuthor"
+                    tools:text="一场同行的陌生旅途中，绝不会知道下一秒将要发生的事情。唯一可以预见的是，那不会是熟知的日常朝夕。"
+                    android:textColor="#000000"
+                    />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

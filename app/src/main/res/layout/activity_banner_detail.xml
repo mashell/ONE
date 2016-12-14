@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mainContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7bfbb"
+        >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            >
+        <ImageView
+                android:id="@+id/closeButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/close"
+                android:padding="4dp"
+                android:layout_centerVertical="true"
+                />
+        <TextView
+                android:id="@+id/detailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#e6ffffff"
+                android:layout_centerInParent="true"
+                tools:text="你好吗，我很好。"
+                />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/bannerDetailRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    <View
+            android:layout_width="100dp"
+            android:layout_height="3dp"
+            android:background="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            />
+    <TextView
+            android:id="@+id/bottomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#e6ffffff"
+            android:layout_gravity="center_horizontal"
+            tools:text="如果我当初勇敢，结局是不是不一样。"
+            android:layout_marginBottom="50dp"/>
+
+    <ImageView
+            android:id="@+id/bannerDetailImg"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:src="@drawable/test"
+            android:scaleType="centerCrop"
+            />
+
+</LinearLayout>

@@ -1,12 +1,7 @@
 package com.mashell.one.module.read.view.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.mashell.one.C;
@@ -21,6 +16,7 @@ import com.mashell.one.module.read.bean.ReadArticleList;
 import com.mashell.one.module.read.contract.ReadContract;
 import com.mashell.one.module.read.presenter.ReadPresenter;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,22 +30,11 @@ import rx.Observable;
  * Github: https://github.com/mashell
  */
 
-public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadContract.IReadView {
+public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadContract.IReadView, OnBannerClickListener {
     @BindView(R.id.readBanner)
     Banner mBanner;
     @BindView(R.id.readViewPager)
     ViewPager mViewPager;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
 
     @Override
     public int bindLayout() {
@@ -66,6 +51,8 @@ public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadCon
     public void initBannerData(List<String> bannerData) {
         mBanner.setImageLoader(new GlideImageLoader());
         mBanner.setImages(bannerData);
+
+        mBanner.setOnBannerClickListener(this);
         mBanner.start();
     }
 
@@ -80,6 +67,7 @@ public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadCon
         for (int i = 0; i < articleList.essay.size(); i++) {
             fragmentList.add(InnerReadFragment.getInstance(articleList.essay.get(i),articleList.serial.get(i),articleList.question.get(i)));
         }
+
         fragmentList.add(rightMostFragment);
         FragmentAdapter adapter = new FragmentAdapter(getChildFragmentManager(), fragmentList);
         mViewPager.setAdapter(adapter);
@@ -110,6 +98,11 @@ public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadCon
     }
 
     @Override
+    public void OnBannerClick(int position) {
+
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
         mBanner.startAutoPlay();
@@ -130,4 +123,5 @@ public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadCon
     public <V> Observable.Transformer<V, V> bind() {
         return this.bindToLifecycle();
     }
+
 }
