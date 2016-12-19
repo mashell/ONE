@@ -24,7 +24,7 @@ import butterknife.OnClick;
  * Github: https://github.com/mashell
  */
 
-public class MainActivity extends BaseActivity<MainPresenter> implements View.OnClickListener{
+public class MainActivity extends BaseActivity<MainPresenter> implements View.OnClickListener {
 
     //记录当前选择的fragment
     private int currentFragment = C.T_HOME;
@@ -44,8 +44,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
     ImageView imgMovie;
     @BindView(R.id.imgMusic)
     ImageView imgMusic;
-
-
 
 
     @Override
@@ -81,10 +79,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
 
     /**
      * 更改整个页面tab按钮状态以及fragment页面切换
-     *
-     * @param position
      */
     private void setTabStatus(int position) {
+        hideFragment();
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
         recoveryButtonStatus(currentFragment);
         changeStatus(position);
@@ -92,29 +89,33 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
             case C.T_HOME:
                 if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
+                    transaction.add(R.id.fragmentContainer,mHomeFragment);
                 }
-                transaction.replace(R.id.fragmentContainer, mHomeFragment);
+                transaction.show(mHomeFragment);
                 break;
 
             case C.T_READ:
                 if (mReadFragment == null) {
                     mReadFragment = new ReadFragment();
+                    transaction.add(R.id.fragmentContainer,mReadFragment);
                 }
-                transaction.replace(R.id.fragmentContainer, mReadFragment);
+                transaction.show(mReadFragment);
                 break;
 
             case C.T_MUSIC:
                 if (mMusicFragment == null) {
                     mMusicFragment = new MusicFragment();
+                    transaction.add(R.id.fragmentContainer,mMusicFragment);
                 }
-                transaction.replace(R.id.fragmentContainer, mMusicFragment);
+                transaction.show(mMusicFragment);
                 break;
 
             case C.T_MOVIE:
                 if (mMovieFragment == null) {
                     mMovieFragment = new MovieFragment();
+                    transaction.add(R.id.fragmentContainer,mMovieFragment);
                 }
-                transaction.replace(R.id.fragmentContainer, mMovieFragment);
+                transaction.show(mMovieFragment);
                 break;
 
             default:
@@ -151,10 +152,31 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
 
     }
 
+    private void hideFragment() {
+
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        if (mHomeFragment != null) {
+            transaction.hide(mHomeFragment);
+        }
+
+        if (mReadFragment != null) {
+            transaction.hide(mReadFragment);
+        }
+
+        if (mMusicFragment != null) {
+            transaction.hide(mMusicFragment);
+
+        }
+
+        if (mMovieFragment != null) {
+            transaction.hide(mMovieFragment);
+        }
+
+        transaction.commit();
+    }
+
     /**
      * 更改按下的tab按钮状态和toolbar的title
-     *
-     * @param index
      */
     private void changeStatus(int index) {
         switch (index) {
