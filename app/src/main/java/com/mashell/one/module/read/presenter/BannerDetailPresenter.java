@@ -38,7 +38,7 @@ public class BannerDetailPresenter extends BannerDetailContract.IBannerDetailPre
 
                     @Override
                     public void onNext(List<ReadBannerDetail> readBannerDetails) {
-
+                        getView().setBannerDetailData(readBannerDetails);
                     }
                 });
     }

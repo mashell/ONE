@@ -45,6 +45,7 @@ public class ReadPresenter extends ReadContract.IReadPresenter {
                             bannerUrl.add(readBanners.get(i).cover);
                         }
                         getView().initBannerData(bannerUrl);
+                        getView().setBannerData(readBanners);
                     }
                 });
     }

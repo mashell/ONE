@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mainContainer"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#f7bfbb"
+        android:fitsSystemWindows="true"
         >
     <RelativeLayout
             android:layout_width="match_parent"
@@ -29,36 +31,50 @@
                 tools:text="你好吗，我很好。"
                 />
     </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/bannerDetailRecycler"
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-    <View
-            android:layout_width="100dp"
-            android:layout_height="3dp"
-            android:background="#FFFFFF"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            />
-    <TextView
-            android:id="@+id/bottomText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="#e6ffffff"
-            android:layout_gravity="center_horizontal"
-            tools:text="如果我当初勇敢，结局是不是不一样。"
-            android:layout_marginBottom="50dp"/>
+            >
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
 
-    <ImageView
-            android:id="@+id/bannerDetailImg"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:src="@drawable/test"
-            android:scaleType="centerCrop"
-            />
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/bannerDetailRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            <View
+                    android:layout_width="100dp"
+                    android:layout_height="3dp"
+                    android:background="#FFFFFF"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    />
+            <TextView
+                    android:id="@+id/bottomText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#e6ffffff"
+                    android:layout_gravity="center_horizontal"
+                    tools:text="如果我当初勇敢，结局是不是不一样。"
+                    android:layout_marginBottom="50dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    />
+
+            <ImageView
+                    android:id="@+id/bannerDetailImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:src="@drawable/test"
+                    android:scaleType="centerCrop"
+                    />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

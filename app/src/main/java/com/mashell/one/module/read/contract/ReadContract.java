@@ -25,6 +25,7 @@ public interface ReadContract {
 
     interface IReadView extends BaseView{
         void initBannerData(List<String> bannerData);
+        void setBannerData(List<ReadBanner> list);
         void initReadContent(ReadArticleList articleList);
     }
 

@@ -13,8 +13,10 @@ import com.mashell.one.module.home.view.activity.EarlyListActivity;
 import com.mashell.one.module.home.view.fragment.LeftMostFragment;
 import com.mashell.one.module.home.view.fragment.RightMostFragment;
 import com.mashell.one.module.read.bean.ReadArticleList;
+import com.mashell.one.module.read.bean.ReadBanner;
 import com.mashell.one.module.read.contract.ReadContract;
 import com.mashell.one.module.read.presenter.ReadPresenter;
+import com.mashell.one.module.read.view.activity.BannerDetailActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerClickListener;
 
@@ -35,6 +37,7 @@ public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadCon
     Banner mBanner;
     @BindView(R.id.readViewPager)
     ViewPager mViewPager;
+    private List<ReadBanner> mBannerList;
 
     @Override
     public int bindLayout() {
@@ -51,7 +54,6 @@ public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadCon
     public void initBannerData(List<String> bannerData) {
         mBanner.setImageLoader(new GlideImageLoader());
         mBanner.setImages(bannerData);
-
         mBanner.setOnBannerClickListener(this);
         mBanner.start();
     }
@@ -98,9 +100,19 @@ public class ReadFragment extends BaseFragment<ReadPresenter> implements ReadCon
     }
 
     @Override
+    public void setBannerData(List<ReadBanner> list) {
+        mBannerList = list;
+    }
+
+    @Override
     public void OnBannerClick(int position) {
+        startActivity(BannerDetailActivity.getInstance(getContext(),mBannerList.get(position-1).title,
+                mBannerList.get(position-1).bottomText,mBannerList.get(position-1).bgcolor,mBannerList.get(position-1).cover,
+                mBannerList.get(position-1).id));
+        getActivity().overridePendingTransition(R.anim.activity_open,R.anim.activity_stay);
 
     }
+
 
     @Override
     public void onStart() {

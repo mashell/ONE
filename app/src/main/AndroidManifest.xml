@@ -25,6 +25,7 @@
         <activity android:name=".module.home.view.activity.EarlyListActivity"/>
         <activity android:name=".module.home.view.activity.MonthListActivity"/>
         <activity android:name=".module.home.view.activity.OneDetailActivity"/>
+        <activity android:name=".module.read.view.activity.BannerDetailActivity"/>
     </application>
 
 </manifest>

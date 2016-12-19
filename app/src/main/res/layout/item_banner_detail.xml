@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+    <TextView
+            android:id="@+id/itemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            tools:text="灰猫奇艺事务所"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="6dp"
+            android:textColor="#ffffff"
+            />
+    <TextView
+            android:id="@+id/itemAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="康复"
+            android:layout_marginBottom="6dp"
+            android:textColor="#c6ffffff"
+            />
+    <TextView
+            android:id="@+id/itemDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="大约两年前，我有过一次神奇的经历，称之为神迹也不算夸张"
+            android:textColor="#c6ffffff"
+            />
+
+</LinearLayout>

@@ -49,7 +49,7 @@ public class EarlyListActivity extends BaseActivity<EarlyListPresenter> implemen
     public void initView() {
         intentType = getIntent().getIntExtra("intentType", 0);
         setIntentStatus(intentType);
-        final EarlyAdapter adapter = new EarlyAdapter(mvpPresenter.getEarlyMonth(intentType));
+        final EarlyAdapter adapter = new EarlyAdapter(mPresenter.getEarlyMonth(intentType));
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onClick(View view, int position) {

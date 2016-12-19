@@ -22,6 +22,7 @@ public interface BannerDetailContract {
     }
 
     interface IBannerDetailView extends BaseView{
+        void setBannerDetailData(List<ReadBannerDetail> list);
 
     }
 

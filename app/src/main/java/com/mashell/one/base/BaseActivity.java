@@ -33,14 +33,14 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
     //是否允许旋转屏幕
     private boolean mIfAllowScreenRotate = true;
 
-    protected P mvpPresenter;
+    protected P mPresenter;
     private Unbinder mUnBinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TAG = this.getClass().getSimpleName();
-        mvpPresenter = createPresenter();
+        mPresenter = createPresenter();
         try {
             Bundle bunSdle = getIntent().getExtras();
             mContextView = LayoutInflater.from(this).inflate(bindLayout(), null);
@@ -156,8 +156,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mvpPresenter != null)
-            mvpPresenter.detachView();
+        if (mPresenter != null)
+            mPresenter.detachView();
         mUnBinder.unbind();
         OneApp.getContext().removeActivity(this);
     }

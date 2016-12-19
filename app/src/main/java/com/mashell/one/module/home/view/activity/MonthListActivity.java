@@ -58,7 +58,7 @@ public class MonthListActivity<T> extends BaseActivity<MonthPresenter> implement
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mRecyclerView.addItemDecoration(new SpaceItemDecoration(8));
         mRecyclerView.setAdapter(adapter);
-        mvpPresenter.getOneList(month.monthValue,intentType);
+        mPresenter.getOneList(month.monthValue,intentType);
     }
 
     @OnClick(R.id.backButton)
