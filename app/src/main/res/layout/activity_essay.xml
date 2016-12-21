@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+    <LinearLayout
+            android:id="@+id/bottomContainer"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            >
+        <RelativeLayout
+                android:id="@+id/likeContainer"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                >
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    >
+                <ImageView
+                        android:id="@+id/likeImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/laud"
+                        />
+                <TextView
+                        android:id="@+id/likeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="1311"
+                        android:layout_gravity="center_vertical"
+                        />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/alignLine"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                />
+
+        <RelativeLayout
+                android:id="@+id/commentContainer"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                >
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    >
+                <ImageView
+                        android:id="@+id/commentImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/comment_image"
+                        />
+                <TextView
+                        android:id="@+id/commentText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        tools:text="1311"
+                        android:layout_gravity="center_vertical"
+                        />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/alignLine"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                />
+
+        <RelativeLayout
+                android:id="@+id/shareContainer"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                >
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    >
+                <ImageView
+                        android:id="@+id/shareImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/share_image"
+                        />
+                <TextView
+                        android:id="@+id/shareText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        tools:text="1311"
+                        android:layout_gravity="center_vertical"
+                        />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/alignLine"
+            android:layout_above="@+id/bottomContainer"
+            />
+
+</RelativeLayout>
