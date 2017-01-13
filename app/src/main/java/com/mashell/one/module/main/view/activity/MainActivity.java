@@ -1,5 +1,6 @@
 package com.mashell.one.module.main.view.activity;
 
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements View.On
     public void initView() {
         mFragmentManager = getSupportFragmentManager();
         setTabStatus(C.T_HOME);
+        AsyncTask
     }
 
     @OnClick({R.id.imgHome, R.id.imgRead, R.id.imgMusic, R.id.imgMovie})

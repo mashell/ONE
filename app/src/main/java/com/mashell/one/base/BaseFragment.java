@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.trello.rxlifecycle.components.support.RxFragment;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -16,16 +18,11 @@ import butterknife.Unbinder;
  * Github: https://github.com/mashell
  */
 
-public abstract class BaseFragment<P extends BasePresenter> extends com.trello.rxlifecycle.components.support.RxFragment {
+public abstract class BaseFragment<P extends BasePresenter> extends RxFragment {
     private View mContextView = null;
     private String TAG = this.getClass().getSimpleName();
     protected P mPresenter;
     private Unbinder mUnbinder;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Nullable
     @Override

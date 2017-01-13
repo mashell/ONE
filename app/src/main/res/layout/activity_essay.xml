@@ -5,6 +5,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
+    <ImageView
+            android:id="@+id/userIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            />
+    <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    <TextView
+            android:id="@+id/userTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
     <TextView
             android:id="@+id/essayContent"
             android:layout_width="match_parent"
