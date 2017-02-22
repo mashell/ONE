@@ -33,7 +33,6 @@ public class BannerDetailPresenter extends BannerDetailContract.IBannerDetailPre
 
                     @Override
                     public void onError(Throwable e) {
-
                     }
 
                     @Override

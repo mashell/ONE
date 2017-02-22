@@ -10,4 +10,8 @@
     <color name="textColorGray">#b3b3b3</color>
     <color name="itemTransparentGray">#8e514e4e</color>
     <color name="typeBlue">#9fbcdc</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="line">#e9e9e9</color>
+    <color name="name_blue">#507daf</color>
 </resources>

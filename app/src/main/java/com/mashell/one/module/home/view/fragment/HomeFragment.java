@@ -1,6 +1,5 @@
 package com.mashell.one.module.home.view.fragment;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
@@ -28,11 +27,6 @@ import rx.Observable;
 public class HomeFragment extends BaseFragment<HomeContract.IHomePresenter> implements HomeContract.IHomeView {
     @BindView(R.id.fragmentViewPager)
     ViewPager fragmentViewPager;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public void initListFragment(List<String> idList) {
