@@ -172,6 +172,7 @@
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
+
     <LinearLayout
             android:id="@+id/bottom_layout"
             android:layout_width="match_parent"

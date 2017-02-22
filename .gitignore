@@ -49,3 +49,5 @@ libs/
 src/main/java/com/mashell/one/common/
 src/main/java/com/mashell/one/util/
 src/main/res/drawable/
+app/src/main/java/com/mashell/one/module/movie/presenter/
+app/src/main/java/com/mashell/one/module/music/presenter/
