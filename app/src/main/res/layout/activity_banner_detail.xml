@@ -31,7 +31,7 @@
                 tools:text="你好吗，我很好。"
                 />
     </RelativeLayout>
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -75,6 +75,6 @@
                     android:scaleType="centerCrop"
                     />
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

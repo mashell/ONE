@@ -17,16 +17,11 @@ import java.util.List;
  * GitHub: https://github.com/mashell
  */
 
-public class BannerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class BannerAdapter extends RecyclerView.Adapter<BannerHolder> {
 
     private List<ReadBannerDetail> mReadBannerDetails;
 
     private OnItemClickListener mOnItemClickListener;
-
-
-    public List<ReadBannerDetail> getReadBannerDetails() {
-        return mReadBannerDetails;
-    }
 
     public void setReadBannerDetails(List<ReadBannerDetail> readBannerDetails) {
         mReadBannerDetails = readBannerDetails;
@@ -37,17 +32,19 @@ public class BannerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new BannerHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_banner_detail,parent,false),mOnItemClickListener);
+    public BannerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new BannerHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_banner_detail,parent,false),
+                mOnItemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((BannerHolder)holder).bindData(mReadBannerDetails.get(position));
+    public void onBindViewHolder(BannerHolder holder, int position) {
+        holder.bindData(mReadBannerDetails.get(position));
     }
 
     @Override
     public int getItemCount() {
         return mReadBannerDetails == null ? 0 :mReadBannerDetails.size();
     }
+
 }

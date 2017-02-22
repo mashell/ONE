@@ -68,12 +68,8 @@ public class BannerDetailActivity extends BaseActivity<BannerDetailPresenter> im
         mBottomText.setText(getIntent().getStringExtra(INTENT_BOTTOM_TXT));
         Glide.with(this).load(getIntent().getStringExtra(INTENT_URL)).into(mBottomImg);
         adapter = new BannerAdapter();
-        mBannerRecyclerView.setLayoutManager(new LinearLayoutManager(this){
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
+        mBannerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mBannerRecyclerView.setNestedScrollingEnabled(false);
         mBannerRecyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override

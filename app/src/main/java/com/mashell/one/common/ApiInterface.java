@@ -1,13 +1,12 @@
 package com.mashell.one.common;
 
 import com.mashell.one.base.BaseResult;
-
 import com.mashell.one.module.home.bean.OneDetail;
 import com.mashell.one.module.home.bean.OneMonth;
 import com.mashell.one.module.main.bean.Comment;
 import com.mashell.one.module.movie.bean.MovieDetail;
-import com.mashell.one.module.movie.bean.MovieStory;
 import com.mashell.one.module.movie.bean.MovieItem;
+import com.mashell.one.module.movie.bean.MovieStory;
 import com.mashell.one.module.music.bean.MusicDetail;
 import com.mashell.one.module.music.bean.MusicMonth;
 import com.mashell.one.module.read.bean.EssayDetail;
@@ -128,5 +127,5 @@ public interface ApiInterface {
      * 根据类型请求评论接口
      */
     @GET("api/comment/praiseandtime/{type}/{id}/{index}")
-    Observable<BaseResult<Comment>> getComment(@Path("type")String type,@Path("id")String id,@Path("index")String index);
+    Observable<BaseResult<Comment>> getComment(@Path("type")String type, @Path("id")String id, @Path("index")String index);
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="@drawable/simple_border"
+        >
+
+    <TextView
+            android:id="@+id/usered_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp"
+            tools:text="One Bad Lemon:"
+            />
+
+    <TextView
+            android:id="@+id/userd_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="one上以前发过一篇也是写作家写作培训班的，想来应该是有这个班的"
+            />
+
+</LinearLayout>

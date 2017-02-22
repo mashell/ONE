@@ -13,4 +13,5 @@
     <string name="no_more">没有更多了</string>
     <string name="diary">小记</string>
     <string name="txt">图文</string>
+    <string name="comment_list">评论列表</string>
 </resources>

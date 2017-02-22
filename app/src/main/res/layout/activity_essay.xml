@@ -4,6 +4,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         >
     <RelativeLayout
             android:id="@+id/title_layout"
@@ -91,7 +92,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/essay_title"
-                        tools:text="五年前夏天，我接到一通电话。第二反应是忽然一个晴天霹雳，我获得如何回我电话的事。我一愣，心里把那道灵感暂存在一边，如实回答了她电话的情况。“你傻啊，肯定是诈骗电话。”她和我想得一模一样。<br>\r\n <br>\r\n结果她这么一说，我倒无法附和她的意见，只好反击道，“那也不一定。”“怎么不一定了？”“没准儿就是真的什么培训班呢。”“那他们为什么选中了你？"
                         />
 
                 <TextView
@@ -140,7 +140,6 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/author_introduce_avatar"
                         android:layout_toEndOf="@id/author_introduce_avatar"
-                        android:layout_above="@id/author_introduce_weibo"
                         android:layout_below="@id/author_introduce_name"
                         android:textSize="12sp"
                         android:gravity="center"
@@ -157,6 +156,14 @@
                         android:textSize="12sp"
                         />
             </RelativeLayout>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/comment_list"
+                    android:textSize="12sp"
+                    android:background="@color/line_white"/>
             <com.mashell.one.component.LoadMoreRecyclerView
                     android:id="@+id/comment_rv"
                     android:layout_width="match_parent"
@@ -278,6 +285,5 @@
             android:background="@color/alignLine"
             android:layout_above="@+id/bottom_layout"
             />
-
 
 </RelativeLayout>

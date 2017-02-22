@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:background="@color/white"
+        >
+
+    <ImageView
+            android:id="@+id/comment_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/timg"
+            />
+
+    <TextView
+            android:id="@+id/comment_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/comment_avatar"
+            android:layout_toEndOf="@id/comment_avatar"
+            android:layout_alignTop="@+id/comment_avatar"
+            android:textColor="@color/name_blue"
+            tools:text="mashell"
+            />
+
+    <TextView
+            android:id="@+id/comment_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/comment_avatar"
+            android:layout_toRightOf="@id/comment_avatar"
+            android:layout_toEndOf="@id/comment_avatar"
+            tools:text="2017.02.22"
+            />
+
+    <TextView
+            android:id="@+id/comment_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/laud"
+            android:drawableStart="@mipmap/laud"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            tools:text="10"
+            />
+    <LinearLayout
+            android:id="@+id/commented"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@drawable/simple_border"
+            android:layout_below="@+id/comment_avatar"
+            android:visibility="gone"
+            >
+
+        <TextView
+                android:id="@+id/usered_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="6dp"
+                tools:text="One Bad Lemon:"
+                />
+
+        <TextView
+                android:id="@+id/userd_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="one上以前发过一篇也是写作家写作培训班的，想来应该是有这个班的"
+                />
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/comment_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/commented"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            tools:text="嘲讽了所有文学作者对文学创作的初衷，继而引发的一场思考。老李最后对主角说成了，也是对他不为金钱所动的行为而深感佩服，殊不知连同主角，这位伪诗人，无一例外得落入世俗。"
+            />
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line"
+            />
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line"
+            android:layout_below="@+id/comment_content"
+            />
+
+</RelativeLayout>
