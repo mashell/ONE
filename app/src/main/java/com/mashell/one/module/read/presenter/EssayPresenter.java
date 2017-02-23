@@ -39,7 +39,7 @@ public class EssayPresenter extends EssayContract.IEssayPresenter {
                     @Override
                     public void onNext(EssayAndComment essayAndComment) {
                         getView().setEssayDetail(essayAndComment.mEssayDetail);
-                        getView().addCommentData(essayAndComment.mComment.data);
+                        getView().addCommentData(essayAndComment.mComment);
                     }
                 });
 
@@ -84,7 +84,7 @@ public class EssayPresenter extends EssayContract.IEssayPresenter {
 
                     @Override
                     public void onNext(Comment comment) {
-                        getView().addCommentData(comment.data);
+                        getView().addCommentData(comment);
                     }
                 });
 

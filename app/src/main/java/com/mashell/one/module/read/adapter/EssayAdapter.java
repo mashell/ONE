@@ -16,10 +16,19 @@ import java.util.List;
 
 public class EssayAdapter extends RecyclerView.Adapter<EssayViewHolder>{
     private List<CommentItem> mCommentItems;
+    //数据总共有多少条
+    private int size;
 
     public void setCommentItems(List<CommentItem> mCommentItems){
         this.mCommentItems = mCommentItems;
-        this.notifyDataSetChanged();
+    }
+
+    public List<CommentItem> getCommentItems() {
+        return mCommentItems;
+    }
+
+    public void addData(List<CommentItem> mCommentItems){
+        this.mCommentItems.addAll(mCommentItems);
     }
 
     @Override

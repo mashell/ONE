@@ -4,11 +4,8 @@ import com.mashell.one.base.BaseModel;
 import com.mashell.one.base.BasePresenter;
 import com.mashell.one.base.BaseView;
 import com.mashell.one.module.main.bean.Comment;
-import com.mashell.one.module.main.bean.CommentItem;
 import com.mashell.one.module.read.bean.EssayAndComment;
 import com.mashell.one.module.read.bean.EssayDetail;
-
-import java.util.List;
 
 import rx.Observable;
 
@@ -27,7 +24,7 @@ public interface EssayContract {
 
     interface IEssayView extends BaseView{
         void setEssayDetail(EssayDetail essayDetail);
-        void addCommentData(List<CommentItem> commentItems);
+        void addCommentData(Comment comment);
     }
 
     abstract class IEssayPresenter extends BasePresenter<IEssayView,IEssayModel>{

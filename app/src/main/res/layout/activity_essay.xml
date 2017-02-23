@@ -32,146 +32,147 @@
                 />
     </RelativeLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/title_layout"
-            android:layout_above="@+id/bottom_layout"
             >
-        <LinearLayout
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            >
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
+                android:padding="10dp"
                 >
-            <RelativeLayout
+            <ImageView
+                    android:id="@+id/author_avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    tools:src="@mipmap/timg"
+                    />
+            <TextView
+                    android:id="@+id/author_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/author_avatar"
+                    android:layout_toEndOf="@id/author_avatar"
+                    android:textColor="@color/name_blue"
+                    tools:text="mashell"
+                    />
+            <TextView
+                    android:id="@+id/author_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/author_avatar"
+                    android:layout_toEndOf="@id/author_avatar"
+                    android:layout_alignBottom="@id/author_avatar"
+                    android:textColor="@color/textColorGray"
+                    tools:text="2017.2.22"
+                    />
+            <TextView
+                    android:id="@+id/essay_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="不畅销小说写作指南"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_below="@id/author_avatar"
+                    />
+            <TextView
+                    android:id="@+id/essay_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    >
-                <ImageView
-                        android:id="@+id/author_avatar"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginEnd="10dp"
-                        tools:src="@mipmap/timg"
-                        />
-                <TextView
-                        android:id="@+id/author_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/author_avatar"
-                        android:layout_toEndOf="@id/author_avatar"
-                        android:textColor="@color/name_blue"
-                        tools:text="mashell"
-                        />
-                <TextView
-                        android:id="@+id/author_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/author_avatar"
-                        android:layout_toEndOf="@id/author_avatar"
-                        android:layout_alignBottom="@id/author_avatar"
-                        android:textColor="@color/textColorGray"
-                        tools:text="2017.2.22"
-                        />
-                <TextView
-                        android:id="@+id/essay_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="不畅销小说写作指南"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_below="@id/author_avatar"
-                        />
-                <TextView
-                        android:id="@+id/essay_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/essay_title"
-                        />
-
-                <TextView
-                        android:id="@+id/essay_author_introduce"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/essay_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        tools:text="（责任编辑：金子棋 jinziqi@wufazhuce.com）"
-                        android:textSize="12sp"
-                        />
-                <View
-                        android:id="@+id/introduce_line"
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="@color/line"
-                        android:layout_marginBottom="10dp"
-                        android:layout_below="@+id/essay_author_introduce"
-                        />
-
-                <ImageView
-                        android:id="@+id/author_introduce_avatar"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginEnd="10dp"
-                        tools:src="@mipmap/timg"
-                        android:layout_below="@id/introduce_line"
-                        />
-
-                <TextView
-                        android:id="@+id/author_introduce_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/name_blue"
-                        android:layout_alignTop="@+id/author_introduce_avatar"
-                        android:layout_toRightOf="@+id/author_introduce_avatar"
-                        android:layout_toEndOf="@id/author_introduce_avatar"
-                        tools:text="mashell"
-                        />
-
-                <TextView
-                        android:id="@+id/author_introduce_it"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/author_introduce_avatar"
-                        android:layout_toEndOf="@id/author_introduce_avatar"
-                        android:layout_below="@id/author_introduce_name"
-                        android:textSize="12sp"
-                        android:gravity="center"
-                        tools:text="编剧，小说作者。公众号：ma"
-                        />
-                <TextView
-                        android:id="@+id/author_introduce_weibo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="weibo: @mashell"
-                        android:layout_alignBottom="@id/author_introduce_avatar"
-                        android:layout_toRightOf="@+id/author_introduce_avatar"
-                        android:layout_toEndOf="@id/author_introduce_avatar"
-                        android:textSize="12sp"
-                        />
-            </RelativeLayout>
+                    android:layout_below="@+id/essay_title"
+                    />
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/comment_list"
-                    android:textSize="12sp"
-                    android:background="@color/line_white"/>
-            <com.mashell.one.component.LoadMoreRecyclerView
-                    android:id="@+id/comment_rv"
-                    android:layout_width="match_parent"
+                    android:id="@+id/essay_author_introduce"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/essay_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    tools:text="（责任编辑：金子棋 jinziqi@wufazhuce.com）"
+                    android:textSize="12sp"
                     />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+            <View
+                    android:id="@+id/introduce_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/line"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/essay_author_introduce"
+                    />
 
+            <ImageView
+                    android:id="@+id/author_introduce_avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    tools:src="@mipmap/timg"
+                    android:layout_below="@id/introduce_line"
+                    />
+
+            <TextView
+                    android:id="@+id/author_introduce_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/name_blue"
+                    android:layout_alignTop="@+id/author_introduce_avatar"
+                    android:layout_toRightOf="@+id/author_introduce_avatar"
+                    android:layout_toEndOf="@id/author_introduce_avatar"
+                    tools:text="mashell"
+                    />
+
+            <TextView
+                    android:id="@+id/author_introduce_it"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/author_introduce_avatar"
+                    android:layout_toEndOf="@id/author_introduce_avatar"
+                    android:layout_below="@id/author_introduce_name"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    tools:text="编剧，小说作者。公众号：ma"
+                    />
+            <TextView
+                    android:id="@+id/author_introduce_weibo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="weibo: @mashell"
+                    android:layout_alignBottom="@id/author_introduce_avatar"
+                    android:layout_toRightOf="@+id/author_introduce_avatar"
+                    android:layout_toEndOf="@id/author_introduce_avatar"
+                    android:textSize="12sp"
+                    />
+        </RelativeLayout>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:text="@string/comment_list"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:background="@color/line_white"
+                />
+        <com.mashell.one.component.LoadMoreRecyclerView
+                android:id="@+id/comment_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
             android:id="@+id/bottom_layout"

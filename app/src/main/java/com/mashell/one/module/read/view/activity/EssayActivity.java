@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -15,7 +16,7 @@ import com.mashell.one.R;
 import com.mashell.one.base.BaseActivity;
 import com.mashell.one.common.CropCircleTransformation;
 import com.mashell.one.component.LoadMoreRecyclerView;
-import com.mashell.one.module.main.bean.CommentItem;
+import com.mashell.one.module.main.bean.Comment;
 import com.mashell.one.module.read.adapter.EssayAdapter;
 import com.mashell.one.module.read.bean.EssayDetail;
 import com.mashell.one.module.read.contract.EssayContract;
@@ -23,8 +24,6 @@ import com.mashell.one.module.read.presenter.EssayPresenter;
 import com.mashell.one.util.TimeUtil;
 import com.mashell.one.util.ToastUtil;
 import com.mashell.one.util.Utils;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,7 +35,7 @@ import rx.Observable;
  * GitHub: https://github.com/mashell
  */
 
-public class EssayActivity extends BaseActivity<EssayPresenter> implements EssayContract.IEssayView {
+public class EssayActivity extends BaseActivity<EssayPresenter> implements EssayContract.IEssayView, LoadMoreRecyclerView.LoadMoreListener {
     public static String INTENT_ID = "intent_id";
 
     @BindView(R.id.back_bt)
@@ -75,19 +74,33 @@ public class EssayActivity extends BaseActivity<EssayPresenter> implements Essay
     RelativeLayout mShareContainer;
 
     private EssayAdapter mEssayAdapter;
+    private String id;
+    private String page = "0";
+    private int currentPage = 1;
+
     @Override
     public void initView() {
+        id = getIntent().getStringExtra(INTENT_ID);
         mEssayAdapter = new EssayAdapter();
-        mCommentRv.setAdapter(mEssayAdapter);
+        mCommentRv.setLoadMoreListener(this);
         mCommentRv.setLayoutManager(new LinearLayoutManager(this));
         mCommentRv.setNestedScrollingEnabled(false);
-        mCommentRv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        mPresenter.getAllData(getIntent().getStringExtra(INTENT_ID));
+        mCommentRv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        mCommentRv.setPAGE_SIZE(28);
+        mCommentRv.setAdapter(mEssayAdapter);
+        mPresenter.getAllData(id);
     }
 
     @Override
-    public void addCommentData(List<CommentItem> commentItems) {
-        mEssayAdapter.setCommentItems(commentItems);
+    public void addCommentData(Comment comment) {
+        if (currentPage == 1)
+            mEssayAdapter.setCommentItems(comment.data);
+
+        else
+            mEssayAdapter.addData(comment.data);
+
+        mCommentRv.notifyDataChange(1,comment.count);
+        currentPage++;
     }
 
     @Override
@@ -99,7 +112,7 @@ public class EssayActivity extends BaseActivity<EssayPresenter> implements Essay
         mEssayAuthorIntroduce.setText(essayDetail.hpAuthorIntroduce);
         mAuthorIntroduceName.setText(Utils.safeText(essayDetail.author.get(0).userName));
         mAuthorIntroduceIt.setText(essayDetail.author.get(0).desc);
-        mAuthorIntroduceWeibo.setText(Utils.safeText("weibo: "+essayDetail.author.get(0).wbName));
+        mAuthorIntroduceWeibo.setText(Utils.safeText("weibo: " + essayDetail.author.get(0).wbName));
 
         Glide.with(this).load(essayDetail.author.get(0).webUrl)
                 .bitmapTransform(new CropCircleTransformation(this))
@@ -114,10 +127,16 @@ public class EssayActivity extends BaseActivity<EssayPresenter> implements Essay
         mCommentText.setText(Utils.safeText(essayDetail.commentnum));
     }
 
-    public static Intent getIntent(Context context,String id){
-        Intent intent = new Intent(context,EssayActivity.class);
-        intent.putExtra(INTENT_ID,id);
+    public static Intent getIntent(Context context, String id) {
+        Intent intent = new Intent(context, EssayActivity.class);
+        intent.putExtra(INTENT_ID, id);
         return intent;
+    }
+
+    @Override
+    public void onLoadMore() {
+        Log.e("一个","加载更多");
+        mPresenter.getCommentList(id, mEssayAdapter.getCommentItems().get(mEssayAdapter.getItemCount()).id);
     }
 
     @Override
