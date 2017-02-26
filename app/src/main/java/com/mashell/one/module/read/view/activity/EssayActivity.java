@@ -75,18 +75,17 @@ public class EssayActivity extends BaseActivity<EssayPresenter> implements Essay
 
     private EssayAdapter mEssayAdapter;
     private String id;
-    private String page = "0";
     private int currentPage = 1;
 
     @Override
     public void initView() {
         id = getIntent().getStringExtra(INTENT_ID);
         mEssayAdapter = new EssayAdapter();
-        mCommentRv.setLoadMoreListener(this);
         mCommentRv.setLayoutManager(new LinearLayoutManager(this));
         mCommentRv.setNestedScrollingEnabled(false);
         mCommentRv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mCommentRv.setPAGE_SIZE(28);
+        mCommentRv.setLoadMoreListener(this);
         mCommentRv.setAdapter(mEssayAdapter);
         mPresenter.getAllData(id);
     }
@@ -99,7 +98,7 @@ public class EssayActivity extends BaseActivity<EssayPresenter> implements Essay
         else
             mEssayAdapter.addData(comment.data);
 
-        mCommentRv.notifyDataChange(1,comment.count);
+        mCommentRv.notifyDataChange(currentPage,comment.count);
         currentPage++;
     }
 
@@ -136,7 +135,8 @@ public class EssayActivity extends BaseActivity<EssayPresenter> implements Essay
     @Override
     public void onLoadMore() {
         Log.e("一个","加载更多");
-        mPresenter.getCommentList(id, mEssayAdapter.getCommentItems().get(mEssayAdapter.getItemCount()).id);
+        mPresenter.getCommentList(id, "2");
+        //mPresenter.getCommentList(id, mEssayAdapter.getCommentItems().get(mEssayAdapter.getItemCount()).id);
     }
 
     @Override

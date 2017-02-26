@@ -20,14 +20,6 @@ import android.widget.RelativeLayout;
 
 import com.mashell.one.R;
 
-/**
- * Created by zk on 2016/2/18.
- * 上拉加载更多
- * 新增侧滑删除，使用方法：在adapter中写上接口
- * public interface OnItemClickListener {void onDeleteClick(int position);}
- * 在对应使用recyclerView的地方，将实现OnItemClickListener接口即可
- * 具体可参照com.campussay.modules.user.center.ui.messageActivity.ui.AllMessageActivity中的186行
- */
 public class LoadMoreRecyclerView extends RecyclerView {
 
     public int currentStatus = NO_MORE;
