@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.mashell.one.module.main.bean.CommentItem;
 import com.mashell.one.module.read.viewholder.EssayViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +29,8 @@ public class EssayAdapter extends RecyclerView.Adapter<EssayViewHolder>{
     }
 
     public void addData(List<CommentItem> mCommentItems){
+        if (null == this.mCommentItems)
+            this.mCommentItems = new ArrayList<>();
         this.mCommentItems.addAll(mCommentItems);
     }
 

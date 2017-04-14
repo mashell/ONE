@@ -2,16 +2,24 @@ package com.mashell.one.common;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.mashell.one.base.OneApp;
+import com.mashell.one.util.Utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -43,6 +51,45 @@ public class RetrofitInstance {
          HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+
+        //网络请求cache缓存
+        File cacheFile = new File(OneApp.getContext().getExternalCacheDir(), "XiQueApp");
+        Cache cache = new Cache(cacheFile, 1024 * 1024 * 20);
+        Interceptor cacheInterceptor = new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+                if (Utils.isNetworkConnected(OneApp.getContext())) {
+                    request = request.newBuilder()
+                            //网络可用，强制缓存
+                            .cacheControl(CacheControl.FORCE_NETWORK)
+                            .build();
+                } else{
+                    request = request.newBuilder()
+                            //网络不可用，读取缓存
+                            .cacheControl(CacheControl.FORCE_CACHE)
+                            .build();
+                }
+                Response response = chain.proceed(request);
+                if (Utils.isNetworkConnected(OneApp.getContext())) {
+                    int maxAge = 0;
+                    // 有网络时 设置缓存超时时间0个小时
+                    response = response.newBuilder()
+                            .header("Cache-Control", "public, max-age=" + maxAge)
+                            .removeHeader("Pragma")// 清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
+                            .build();
+                } else {
+                    // 无网络时，设置超时为2周
+                    int maxStale = 60 * 60 * 24 * 14;
+                    response = response.newBuilder()
+                            .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
+                            .removeHeader("Pragma")
+                            .build();
+                }
+                return response;
+            }
+        };
+
         //Cookie的持久化管理，为每次请求带上cookie
         //http://blog.csdn.net/lyhhj/article/details/51388147
         CookieJar mCookieJar = new CookieJar() {
@@ -65,6 +112,8 @@ public class RetrofitInstance {
         mOkHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(OneApp.isDebug ? loggingInterceptor : null)
                 .cookieJar(mCookieJar)
+//                .cache(cache)
+//                .addInterceptor(cacheInterceptor)
                 .addNetworkInterceptor(new StethoInterceptor())
                 .retryOnConnectionFailure(true)
                 .connectTimeout(15, TimeUnit.SECONDS)

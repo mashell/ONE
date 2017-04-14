@@ -93,12 +93,13 @@ public class EssayActivity extends BaseActivity<EssayPresenter> implements Essay
     @Override
     public void addCommentData(Comment comment) {
         if (currentPage == 1)
-            mEssayAdapter.setCommentItems(comment.data);
+        {
+            //clear数组
+        }
+        //mEssayAdapter.setCommentItems(comment.data);
 
-        else
-            mEssayAdapter.addData(comment.data);
-
-        mCommentRv.notifyDataChange(currentPage,comment.count);
+        mEssayAdapter.addData(comment.data);
+        mCommentRv.notifyDataChange(currentPage, comment.count);
         currentPage++;
     }
 
@@ -134,7 +135,7 @@ public class EssayActivity extends BaseActivity<EssayPresenter> implements Essay
 
     @Override
     public void onLoadMore() {
-        Log.e("一个","加载更多");
+        Log.e("一个", "加载更多");
         mPresenter.getCommentList(id, "2");
         //mPresenter.getCommentList(id, mEssayAdapter.getCommentItems().get(mEssayAdapter.getItemCount()).id);
     }
